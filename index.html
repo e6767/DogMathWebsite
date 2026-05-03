@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dogmath - Free Unblocked Games</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#f0f0f0;
+  --white:#fff;
+  --accent:#22c55e;
+  --accent-dark:#16a34a;
+  --text:#1a1a1a;
+  --muted:#888;
+  --border:#e0e0e0;
+  --radius:10px;
+  --font:'Nunito',sans-serif;
+}
+body{background:var(--bg);font-family:var(--font);color:var(--text);overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;
+  padding:0 12px;height:56px;gap:10px;
+  position:sticky;top:0;z-index:100;
+}
+.logo-card{
+  background:var(--white);border:1.5px solid var(--border);
+  border-radius:14px;overflow:hidden;
+  display:flex;flex-direction:column;
+  width:88px;cursor:pointer;flex-shrink:0;text-decoration:none;
+  transition:box-shadow 0.15s;
+}
+.logo-card:hover{box-shadow:0 4px 14px rgba(0,0,0,0.1);}
+.logo-top{display:flex;flex-direction:column;align-items:center;padding:5px 6px 2px;background:var(--white);}
+.logo-name{font-size:13px;font-weight:900;color:var(--text);letter-spacing:-0.3px;}
+.logo-bottom{display:grid;grid-template-columns:1fr 1fr;}
+.logo-btn{
+  background:var(--accent);padding:5px 0;
+  display:flex;align-items:center;justify-content:center;
+  border:none;cursor:pointer;transition:background 0.15s;
+}
+.logo-btn:first-child{border-right:1px solid rgba(255,255,255,0.3);}
+.logo-btn:hover{background:var(--accent-dark);}
+.logo-btn svg{width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+
+.nav-search-btn{
+  flex:1;max-width:460px;height:40px;border-radius:10px;
+  border:1.5px solid var(--border);background:var(--bg);
+  padding:0 14px;font-size:14px;font-family:var(--font);
+  color:var(--muted);cursor:pointer;text-align:left;
+  display:flex;align-items:center;gap:8px;
+  transition:border-color 0.15s;
+}
+.nav-search-btn:hover{border-color:var(--accent);}
+
+/* ── GAME GRID ── */
+.grid-wrap{padding:8px;}
+.game-mosaic{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(88px,1fr));
+  gap:5px;
+}
+.game-tile{
+  border-radius:var(--radius);overflow:hidden;cursor:pointer;
+  position:relative;background:var(--white);aspect-ratio:1;
+  transition:transform 0.12s,box-shadow 0.12s;
+}
+.game-tile.big{grid-column:span 2;grid-row:span 2;aspect-ratio:auto;}
+.game-tile.wide{grid-column:span 3;aspect-ratio:2.8/1;}
+.game-tile:hover{transform:scale(1.04);box-shadow:0 6px 20px rgba(0,0,0,0.18);z-index:2;}
+.fake-thumb{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:34px;}
+.game-tile.big .fake-thumb{font-size:72px;}
+.game-tile.wide .fake-thumb{font-size:40px;gap:8px;}
+.tile-label{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:18px 7px 5px;
+  background:linear-gradient(to top,rgba(0,0,0,0.72),transparent);
+  font-size:11px;font-weight:800;color:#fff;
+  opacity:0;transition:opacity 0.15s;pointer-events:none;
+}
+.game-tile:hover .tile-label{opacity:1;}
+.badge{position:absolute;top:5px;left:5px;font-size:9px;font-weight:900;padding:2px 6px;border-radius:5px;pointer-events:none;}
+.badge-hot{background:#f97316;color:#fff;}
+.badge-new{background:#22c55e;color:#fff;}
+.badge-top{background:#a855f7;color:#fff;}
+
+/* ── SEARCH OVERLAY ── */
+.search-overlay{
+  display:none;position:fixed;inset:0;z-index:500;
+  background:rgba(0,0,0,0.4);
+}
+.search-overlay.open{display:block;}
+.search-panel{
+  position:absolute;top:0;left:0;right:0;
+  background:var(--white);border-radius:0 0 22px 22px;
+  padding:16px 16px 28px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.15);
+  max-height:88vh;overflow-y:auto;
+  animation:slideDown 0.2s ease;
+}
+@keyframes slideDown{from{transform:translateY(-16px);opacity:0}to{transform:translateY(0);opacity:1}}
+
+.search-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.back-btn{
+  width:36px;height:36px;border-radius:50%;background:var(--bg);
+  border:none;cursor:pointer;font-size:20px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:background 0.15s;color:var(--text);font-family:var(--font);
+}
+.back-btn:hover{background:var(--border);}
+.search-heading{font-size:18px;font-weight:900;}
+
+.search-input-wrap{
+  background:var(--bg);border:2px solid var(--border);border-radius:30px;
+  display:flex;align-items:center;padding:0 18px;gap:10px;
+  margin-bottom:18px;transition:border-color 0.15s;
+}
+.search-input-wrap:focus-within{border-color:var(--accent);}
+.search-input-wrap svg{width:18px;height:18px;stroke:var(--muted);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+.search-input{border:none;background:transparent;outline:none;font-family:var(--font);font-size:15px;color:var(--text);width:100%;padding:13px 0;}
+.search-input::placeholder{color:var(--muted);}
+
+.filter-label{font-size:11px;font-weight:900;color:var(--muted);letter-spacing:0.7px;text-transform:uppercase;margin-bottom:9px;}
+.pills-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px;}
+.pill{
+  padding:7px 16px;border-radius:30px;font-size:13px;font-weight:800;
+  font-family:var(--font);border:2px solid var(--border);
+  background:var(--white);color:var(--text);cursor:pointer;white-space:nowrap;
+  transition:all 0.12s;
+}
+.pill:hover,.pill.active{background:var(--text);color:var(--white);border-color:var(--text);}
+.device-row{display:flex;gap:7px;margin-bottom:22px;}
+
+.popup-section-title{font-size:18px;font-weight:900;margin-bottom:12px;}
+.popup-games{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none;}
+.popup-games::-webkit-scrollbar{display:none;}
+.popup-game-card{flex-shrink:0;width:128px;cursor:pointer;transition:transform 0.12s;}
+.popup-game-card:hover{transform:scale(1.04);}
+.popup-thumb{width:128px;height:128px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:50px;}
+.popup-game-name{font-size:12px;font-weight:800;margin-top:6px;text-align:center;line-height:1.2;color:var(--text);}
+
+.search-results{display:none;}
+.search-results.show{display:block;}
+.result-item{display:flex;align-items:center;gap:12px;padding:10px 8px;border-radius:10px;cursor:pointer;transition:background 0.1s;}
+.result-item:hover{background:var(--bg);}
+.result-icon{width:46px;height:46px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:24px;}
+.result-name{font-size:14px;font-weight:800;color:var(--text);}
+.result-genre{font-size:11px;color:var(--muted);font-weight:700;margin-top:1px;}
+.no-results{padding:24px;text-align:center;color:var(--muted);font-weight:700;font-size:14px;}
+
+/* ── GAME MODAL ── */
+.game-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:600;flex-direction:column;align-items:center;justify-content:center;}
+.game-modal.open{display:flex;}
+.game-modal-inner{background:#111;border-radius:16px;width:92%;max-width:920px;overflow:hidden;}
+.game-modal-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#0a0a0a;}
+.game-modal-title{color:#fff;font-weight:900;font-size:15px;}
+.game-modal-close{background:#2a2a2a;border:none;color:#fff;border-radius:8px;padding:6px 14px;cursor:pointer;font-family:var(--font);font-weight:800;font-size:13px;}
+.game-modal-close:hover{background:#3a3a3a;}
+.game-modal-body{background:#000;min-height:480px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:40px 20px;text-align:center;color:#666;font-size:13px;}
+.game-emoji{font-size:54px;margin-bottom:4px;}
+.game-modal-body strong{color:#fff;font-size:17px;display:block;}
+.iframe-hint{background:#1a1a1a;border-radius:8px;padding:10px 16px;font-size:12px;color:#4ade80;font-family:monospace;margin-top:4px;}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);background:var(--white);padding:14px 20px;margin-top:8px;display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:700;color:var(--muted);flex-wrap:wrap;gap:8px;}
+footer a{color:var(--muted);text-decoration:none;}
+footer a:hover{color:var(--accent);}
+.footer-links{display:flex;gap:16px;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo-card" href="/">
+    <div class="logo-top">
+      <svg width="62" height="42" viewBox="0 0 130 90" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18 52 Q8 40 12 28 Q15 20 22 24 Q26 28 20 38 Q16 46 22 52" fill="#c47a2b"/>
+        <path d="M18 52 Q9 42 13 31 Q15 24 20 27 Q23 30 18 40 Q15 47 20 52" fill="#e8a44a"/>
+        <ellipse cx="58" cy="60" rx="36" ry="22" fill="#e8a44a"/>
+        <ellipse cx="40" cy="52" rx="18" ry="10" fill="#c47a2b"/>
+        <rect x="72" y="72" width="11" height="18" rx="5" fill="#e8a44a"/>
+        <rect x="87" y="72" width="11" height="18" rx="5" fill="#e8a44a"/>
+        <ellipse cx="77" cy="90" rx="7" ry="4" fill="#c47a2b"/>
+        <ellipse cx="92" cy="90" rx="7" ry="4" fill="#c47a2b"/>
+        <rect x="28" y="68" width="12" height="16" rx="5" fill="#c47a2b"/>
+        <rect x="43" y="70" width="11" height="14" rx="5" fill="#c47a2b"/>
+        <ellipse cx="34" cy="84" rx="8" ry="4" fill="#a0601a"/>
+        <ellipse cx="48" cy="84" rx="7" ry="4" fill="#a0601a"/>
+        <ellipse cx="90" cy="52" rx="14" ry="16" fill="#e8a44a"/>
+        <rect x="78" y="60" width="26" height="7" rx="3.5" fill="#ef4444"/>
+        <rect x="89" y="61" width="5" height="5" rx="1" fill="#fbbf24"/>
+        <ellipse cx="105" cy="38" rx="20" ry="18" fill="#e8a44a"/>
+        <ellipse cx="90" cy="34" rx="8" ry="13" fill="#c47a2b" transform="rotate(10 90 34)"/>
+        <ellipse cx="90" cy="35" rx="5" ry="9" fill="#b86e22" transform="rotate(10 90 35)"/>
+        <ellipse cx="120" cy="42" rx="11" ry="8" fill="#f5c97a"/>
+        <ellipse cx="128" cy="38" rx="4" ry="3" fill="#1a1a1a"/>
+        <path d="M122 44 Q126 48 130 44" stroke="#c47a2b" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <ellipse cx="129" cy="49" rx="4" ry="5" fill="#f87171"/>
+        <line x1="129" y1="44" x2="129" y2="54" stroke="#f06060" stroke-width="1"/>
+        <circle cx="112" cy="34" r="5" fill="white"/>
+        <circle cx="113" cy="34" r="3" fill="#1a1a1a"/>
+        <circle cx="114" cy="33" r="1" fill="white"/>
+        <path d="M108 29 Q113 26 118 28" stroke="#c47a2b" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M92 24 Q98 16 108 18 Q116 20 120 26" fill="#c47a2b"/>
+      </svg>
+      <div class="logo-name">dogmath</div>
+    </div>
+    <div class="logo-bottom">
+      <button class="logo-btn" onclick="event.preventDefault()">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      </button>
+      <button class="logo-btn" onclick="event.preventDefault();openSearch()">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+      </button>
+    </div>
+  </a>
+  <div class="nav-search-btn" onclick="openSearch()">
+    <span>🔍</span> What are you playing today?
+  </div>
+</nav>
+
+<!-- GAME GRID -->
+<div class="grid-wrap">
+  <div class="game-mosaic">
+
+    <div class="game-tile big" onclick="openGame('Slope','⛳','linear-gradient(135deg,#4ade80,#16a34a)')" data-genre="Skill">
+      <div class="fake-thumb" style="background:linear-gradient(135deg,#4ade80,#16a34a);">⛳</div>
+      <div class="tile-label">Slope</div>
+      <span class="badge badge-hot">HOT</span>
+    </div>
+    <div class="game-tile" onclick="openGame('Drift King','🏎️','#fbbf24')" data-genre="Racing">
+      <div class="fake-thumb" style="background:#fbbf24;">🏎️</div>
+      <div class="tile-label">Drift King</div>
+      <span class="badge badge-hot">HOT</span>
+    </div>
+    <div class="game-tile" onclick="openGame('Squid Game','🦑','#60a5fa')" data-genre="Action">
+      <div class="fake-thumb" style="background:#60a5fa;">🦑</div>
+      <div class="tile-label">Squid Game</div>
+    </div>
+    <div class="game-tile" onclick="openGame('Stickman','🤺','#f87171')" data-genre="Action">
+      <div class="fake-thumb" style="background:#f87171;">🤺</div>
+      <div class="tile-label">Stickman</div>
+    </div>
+    <div class="game-tile" onclick="openGame('GTA Online','🚗','#a78bfa')" data-genre="Action">
+      <div class="fake-thumb" style="background:#a78bfa;">🚗</div>
+      <div class="tile-label">GTA Online</div>
+    </div>
+    <div class="game-tile wide" onclick="openGame('Highway Traffic','🚗','linear-gradient(135deg,#1e293b,#334155)')" data-genre="Racing">
+      <div class="fake-thumb" style="background:linear-gradient(135deg,#1e293b,#334155);">🚗&nbsp; Highway Traffic</div>
+      <div class="tile-label">Highway Traffic</div>
+    </div>
+    <div class="game-tile" onclick="openGame('Cookie Clicker','🍪','#fdba74')" data-genre="Idle">
+      <div class="fake-thumb" style="background:#fdba74;">🍪</div>
+      <div class="tile-label">Cookie Clicker</div>
+      <span class="badge badge-hot">HOT</span>
+    </div>
+    <div class="game-tile" onclick="openGame('Slither.io','🐍','#86efac')" data-genre="Multiplayer">
+      <div class="fake-thumb" style="background:#86efac;">🐍</div>
+      <div class="tile-label">Slither.io</div>
+    </div>
+    <div class="game-tile" onclick="openGame('Geometry Dash','🔮','#c4b5fd')" data-genre="Skill">
+      <div class="fake-thumb" style="background:#c4b5fd;">🔮</div>
+      <div class="tile-label">Geometry Dash</div>
+      <span class="badge badge-hot">HOT</span>
+    </div>
+    <div class="game-tile" onclick="openGame('FNAF','👻','#fca5a5')" data-genre="Horror">
+      <div class="fake-thumb" style="background:#fca5a5;">👻</div>
+      <div class="tile-label">FNAF</div>
+    </div>
+    <div class="game-tile" onclick="openGame('Minecraft','⛏️','#6ee7b7')" data-genre="Simulator">
+      <div class="fake-thumb" style="background:#6ee7b7;">⛏️</div>
+      <div class="tile-label">Minecraft</div>
+      <span class="badge badge-new">NEW</span>
+    </div>
+    <div class="game-tile" onclick="openGame('Run 3','🏃','#fcd34d')" data-genre="Action">
+      <div class="fake-thumb" style="background:#fcd34d;">🏃</div>
+      <div class="tile-label">Run 3</div>
+    </div>
+    <div class="game-tile big" onclick="openGame('Steal Brainrot Heist','🎳','linear-gradient(135deg,#f97316,#ea580c)')" data-genre="Action">
+      <div class="fake-thumb" style="background:linear-gradient(135deg,#f97316,#ea580c);">🎳</div>
+      <div class="tile-label">Steal Brainrot Heist</div>
+      <span class="badge badge-new">NEW</span>
+    </div>
+    <div class="game-tile" onclick="openGame('Brookhaven','🏖️','#bfdbfe')" data-genre="Simulator">
+      <div class="fake-thumb" style="background:#bfdbfe;">🏖️</div>
+      <div class="tile-label">Brookhaven</div>
+    </div>
+    <div class="game-tile" onclick="openGame('Head Soccer','⚽','#d1fae5')" data-genre="Sports">
+      <div class="fake-thumb" style="background:#d1fae5;">⚽</div>
+      <div class="tile-label">Head Soccer</div>
+    </div>
+    <div class="game-tile" onclick="openGame('Zombs.io','🧟','#fee2e2')" data-genre="Multiplayer">
+      <div class="fake-thumb" style="background:#fee2e2;">🧟</div>
+      <div class="tile-label">Zombs.io</div>
+    </div>
+    <div class="game-tile" onclick="openGame('Shell Shockers','🥚','#e0e7ff')" data-genre="Action">
+      <div class="fake-thumb" style="background:#e0e7ff;">🥚</div>
+      <div class="tile-label">Shell Shockers</div>
+      <span class="badge badge-hot">HOT</span>
+    </div>
+    <div class="game-tile" onclick="openGame('Smash Karts','💥','#fef9c3')" data-genre="Racing">
+      <div class="fake-thumb" style="background:#fef9c3;">💥</div>
+      <div class="tile-label">Smash Karts</div>
+    </div>
+    <div class="game-tile" onclick="openGame('Basketball Stars')"" data-genre="Sports">
+      <div class="fake-thumb" style="background:#ecfdf5;">🏀</div>
+      <div class="tile-label">Basketball Stars</div>
+    </div>
+    <div class="game-tile" onclick="openGame('Among Us','🔴','#fdf4ff')" data-genre="Multiplayer">
+      <div class="fake-thumb" style="background:#fdf4ff;">🔴</div>
+      <div class="tile-label">Among Us</div>
+      <span class="badge badge-top">TOP</span>
+    </div>
+    <div class="game-tile" onclick="openGame('Dragon Run','🐉','#fff1f2')" data-genre="Action">
+      <div class="fake-thumb" style="background:#fff1f2;">🐉</div>
+      <div class="tile-label">Dragon Run</div>
+      <span class="badge badge-new">NEW</span>
+    </div>
+    <div class="game-tile" onclick="openGame('Undertale','❤️','#f0fdf4')" data-genre="Retro">
+      <div class="fake-thumb" style="background:#f0fdf4;">❤️</div>
+      <div class="tile-label">Undertale</div>
+    </div>
+    <div class="game-tile" onclick="openGame('Football Bros','🏈','#fffbeb')" data-genre="Sports">
+      <div class="fake-thumb" style="background:#fffbeb;">🏈</div>
+      <div class="tile-label">Football Bros</div>
+    </div>
+    <div class="game-tile" onclick="openGame('Moto X3M','🏍️','#ecfdf5')" data-genre="Racing">
+      <div class="fake-thumb" style="background:#ecfdf5;">🏍️</div>
+      <div class="tile-label">Moto X3M</div>
+      <span class="badge badge-hot">HOT</span>
+    </div>
+    <div class="game-tile" onclick="openGame('Goat Simulator','🐐','#fff7ed')" data-genre="Simulator">
+      <div class="fake-thumb" style="background:#fff7ed;">🐐</div>
+      <div class="tile-label">Goat Simulator</div>
+    </div>
+    <div class="game-tile" onclick="openGame('UltraKill','⚔️','#f0fdf4')" data-genre="Action">
+      <div class="fake-thumb" style="background:#f0fdf4;">⚔️</div>
+      <div class="tile-label">UltraKill</div>
+    </div>
+    <div class="game-tile" onclick="openGame('Drift Hunters','🏁','#f8fafc')" data-genre="Racing">
+      <div class="fake-thumb" style="background:#f8fafc;">🏁</div>
+      <div class="tile-label">Drift Hunters</div>
+    </div>
+    <div class="game-tile" onclick="openGame('Pokémon Emerald','⚡','#fef3c7')" data-genre="Retro">
+      <div class="fake-thumb" style="background:#fef3c7;">⚡</div>
+      <div class="tile-label">Pokémon Emerald</div>
+    </div>
+    <div class="game-tile" onclick="openGame('Baseball Bros','⚾','#e0f2fe')" data-genre="Sports">
+      <div class="fake-thumb" style="background:#e0f2fe;">⚾</div>
+      <div class="tile-label">Baseball Bros</div>
+    </div>
+    <div class="game-tile" onclick="openGame('Life Simulator','👶','#fdf2f8')" data-genre="Simulator">
+      <div class="fake-thumb" style="background:#fdf2f8;">👶</div>
+      <div class="tile-label">Life Simulator</div>
+      <span class="badge badge-new">NEW</span>
+    </div>
+    <div class="game-tile" onclick="openGame('Papa\'s Pizzeria','🍕','#fef9c3')" data-genre="Simulator">
+      <div class="fake-thumb" style="background:#fef9c3;">🍕</div>
+      <div class="tile-label">Papa's Pizzeria</div>
+    </div>
+    <div class="game-tile" onclick="openGame('CubeCraft','🧱','#d1fae5')" data-genre="Action">
+      <div class="fake-thumb" style="background:#d1fae5;">🧱</div>
+      <div class="tile-label">CubeCraft</div>
+      <span class="badge badge-new">NEW</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>🐾 Dogmath — Free Unblocked Games &nbsp;·&nbsp; © 2026</div>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#">DMCA</a>
+    <a href="#">Advertise</a>
+    <a href="#">Discord</a>
+  </div>
+</footer>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="searchOverlay" onclick="handleOverlayClick(event)">
+  <div class="search-panel" id="searchPanel">
+    <div class="search-header">
+      <button class="back-btn" onclick="closeSearch()">‹</button>
+      <div class="search-heading">Search</div>
+    </div>
+
+    <div class="search-input-wrap">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+      <input class="search-input" id="searchInput" placeholder="What are you playing today?" autocomplete="off"/>
+    </div>
+
+    <div id="defaultView">
+      <div class="filter-label">Genre</div>
+      <div class="pills-row" id="genrePills">
+        <button class="pill" onclick="filterGenre(this,'Action')">ACTION</button>
+        <button class="pill" onclick="filterGenre(this,'Idle')">IDLE</button>
+        <button class="pill" onclick="filterGenre(this,'Skill')">2D</button>
+        <button class="pill" onclick="filterGenre(this,'Horror')">HORROR</button>
+        <button class="pill" onclick="filterGenre(this,'Racing')">DRIVING</button>
+        <button class="pill" onclick="filterGenre(this,'Sports')">SPORTS</button>
+        <button class="pill" onclick="filterGenre(this,'Puzzle')">PUZZLE</button>
+        <button class="pill" onclick="filterGenre(this,'Multiplayer')">MULTI</button>
+        <button class="pill" onclick="filterGenre(this,'Retro')">RETRO</button>
+        <button class="pill" onclick="filterGenre(this,'Simulator')">SIM</button>
+      </div>
+
+      <div class="filter-label">Device</div>
+      <div class="device-row">
+        <button class="pill active" onclick="deviceClick(this)">DESKTOP</button>
+        <button class="pill" onclick="deviceClick(this)">MOBILE</button>
+        <button class="pill" onclick="deviceClick(this)">TABLET</button>
+      </div>
+
+      <div class="popup-section-title">Top Games</div>
+      <div class="popup-games" id="popupGames"></div>
+    </div>
+
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<!-- GAME MODAL -->
+<div class="game-modal" id="gameModal">
+  <div class="game-modal-inner">
+    <div class="game-modal-bar">
+      <div class="game-modal-title" id="modalTitle">▶ Now Playing</div>
+      <button class="game-modal-close" onclick="closeModal()">✕ Close</button>
+    </div>
+    <div class="game-modal-body" id="gameContainer"></div>
+  </div>
+</div>
+
+<script>
+const games = [
+  {name:'Slope',
+  emoji:'⛳',
+  path:'slope',
+  genre:'Skill'},
+  {name:'Drift King',emoji:'🏎️',bg:'#fbbf24',genre:'Racing'},
+  {name:'Squid Game',emoji:'🦑',bg:'#60a5fa',genre:'Action'},
+  {name:'Cookie Clicker',emoji:'🍪',bg:'#fdba74',genre:'Idle'},
+  {name:'Geometry Dash',emoji:'🔮',bg:'#c4b5fd',genre:'Skill'},
+  {name:'Slither.io',emoji:'🐍',bg:'#86efac',genre:'Multiplayer'},
+  {name:'Run 3',
+  emoji:'🏃',
+  path:'run3',
+  genre:'Action'},
+  {name:'Among Us',emoji:'🔴',bg:'#fdf4ff',genre:'Multiplayer'},
+  {name:'Shell Shockers',emoji:'🥚',bg:'#e0e7ff',genre:'Action'},
+  {name:'Moto X3M',emoji:'🏍️',bg:'#ecfdf5',genre:'Racing'},
+  {name:'FNAF',emoji:'👻',bg:'#fca5a5',genre:'Horror'},
+  {name:'Minecraft',emoji:'⛏️',bg:'#6ee7b7',genre:'Simulator'},
+  {name:'Head Soccer',emoji:'⚽',bg:'#d1fae5',genre:'Sports'},
+  {
+  name: 'Basketball Stars',
+  path: 'basketball-stars',
+  emoji: '🏀',
+  bg: '#ecfdf5',
+  genre: 'Sports',
+},
+  {name:'Undertale',emoji:'❤️',bg:'#f0fdf4',genre:'Retro'},
+  {name:'Pokémon Emerald',emoji:'⚡',bg:'#fef3c7',genre:'Retro'},
+  {
+  name: 'Highway Traffic',
+  emoji: '🚗',
+  bg: 'linear-gradient(135deg,#1e293b,#334155)',
+  genre: 'Racing',
+  iframe: `<iframe src="https://html5.gamedistribution.com/7c151f5e29eb40a591edfe1823e1d0ea/" width="100%" height="550" frameborder="0" allowfullscreen></iframe>`
+}
+];
+
+// Populate top games in popup
+const popupGamesEl = document.getElementById('popupGames');
+games.slice(0,8).forEach(g => {
+  const card = document.createElement('div');
+  card.className = 'popup-game-card';
+  card.innerHTML = `<div class="popup-thumb" style="background:${g.bg};">${g.emoji}</div><div class="popup-game-name">${g.name}</div>`;
+  card.onclick = () => { closeSearch(); openGame(g.name, g.emoji, g.bg); };
+  popupGamesEl.appendChild(card);
+});
+
+// Live search
+const searchInput = document.getElementById('searchInput');
+searchInput.addEventListener('input', function() {
+  const q = this.value.trim().toLowerCase();
+  const results = document.getElementById('searchResults');
+  const defaultView = document.getElementById('defaultView');
+  if (!q) {
+    results.classList.remove('show');
+    defaultView.style.display = '';
+    return;
+  }
+  defaultView.style.display = 'none';
+  const filtered = games.filter(g => g.name.toLowerCase().includes(q));
+  results.innerHTML = filtered.length
+    ? filtered.map(g => `
+        <div class="result-item" onclick="closeSearch();openGame('${g.name}','${g.emoji}','${g.bg}')">
+          <div class="result-icon" style="background:${g.bg};">${g.emoji}</div>
+          <div>
+            <div class="result-name">${g.name}</div>
+            <div class="result-genre">${g.genre}</div>
+          </div>
+        </div>`).join('')
+    : `<div class="no-results">No games found for "${q}" 🐾</div>`;
+  results.classList.add('show');
+});
+
+// Genre filter
+function filterGenre(btn, genre) {
+  closeSearch();
+  document.querySelectorAll('.game-tile').forEach(t => {
+    t.style.display = (t.dataset.genre === genre) ? '' : 'none';
+  });
+}
+
+// Device pills
+function deviceClick(btn) {
+  document.querySelectorAll('.device-row .pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// Search open/close
+function openSearch() {
+  document.getElementById('searchOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => searchInput.focus(), 180);
+}
+function closeSearch() {
+  document.getElementById('searchOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  searchInput.value = '';
+  document.getElementById('searchResults').classList.remove('show');
+  document.getElementById('defaultView').style.display = '';
+}
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('searchOverlay')) closeSearch();
+}
+
+// Game modal
+function openGame(name) {
+  const modal = document.getElementById('gameModal');
+  const container = document.getElementById('gameContainer');
+
+  const game = games.find(g => g.name === name);
+
+  if (game) {
+    container.innerHTML = `
+      <iframe src="games/${game.path}/index.html"
+      width="100%" height="550" frameborder="0" allowfullscreen></iframe>
+    `;
+  } else {
+    container.innerHTML = `<div>Game not found</div>`;
+  }
+
+  modal.classList.add('open');
+}
+function closeModal() {
+  document.getElementById('gameModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('gameModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeSearch(); closeModal(); }
+});
+</script>
+</body>
+</html>
