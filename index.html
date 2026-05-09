@@ -3,9 +3,58 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Dogmath - Free Unblocked Games</title>
+<title>Dogmath - Free Unblocked Games for Kids | 60+ Browser Games</title>
+<meta name="description" content="Play 60+ free unblocked browser games at Dogmath: Wordle, Sonic, Mario, Cut the Rope, and more. No downloads, no signups — instant play in any browser."/>
+<meta name="keywords" content="unblocked games, free games, browser games, online games, kids games, school games, dogmath"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://dogmath.net/"/>
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://dogmath.net/"/>
+<meta property="og:title" content="Dogmath - Free Unblocked Games for Kids"/>
+<meta property="og:description" content="Play 60+ free unblocked browser games at Dogmath: Wordle, Sonic, Mario, Cut the Rope, and more. No downloads, no signups — instant play in any browser."/>
+<meta property="og:image" content="https://dogmath.net/favicon.svg"/>
+<meta property="og:site_name" content="Dogmath"/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:url" content="https://dogmath.net/"/>
+<meta name="twitter:title" content="Dogmath - Free Unblocked Games for Kids"/>
+<meta name="twitter:description" content="Play 60+ free unblocked browser games at Dogmath: Wordle, Sonic, Mario, Cut the Rope, and more."/>
+<meta name="twitter:image" content="https://dogmath.net/favicon.svg"/>
+
 <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
 <link rel="apple-touch-icon" href="favicon.svg"/>
+
+<!-- Schema.org structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Dogmath",
+  "alternateName": "Dogmath - Free Unblocked Games",
+  "url": "https://dogmath.net/",
+  "description": "A free browser games site featuring 60+ unblocked games for kids. Play instantly in your browser — no downloads, no signups.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://dogmath.net/?search={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Dogmath",
+  "url": "https://dogmath.net/",
+  "logo": "https://dogmath.net/favicon.svg"
+}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet"/>
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9208686180473353" crossorigin="anonymous"></script>
@@ -76,6 +125,26 @@ nav{
   transition:border-color 0.15s;
 }
 .nav-search-btn:hover{border-color:var(--accent);}
+
+/* ── SEO HEADER ── */
+.site-header{
+  padding:24px 16px 8px;max-width:960px;margin:0 auto;
+}
+.site-header h1{
+  font-size:28px;font-weight:900;letter-spacing:-0.6px;
+  background:linear-gradient(90deg,#f59e0b,#ec4899 55%,#a855f7);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-bottom:6px;line-height:1.15;
+}
+.site-header p{
+  font-size:13px;color:var(--muted);line-height:1.55;
+  max-width:720px;font-weight:600;
+}
+@media (max-width:640px){
+  .site-header{padding:16px 12px 4px;}
+  .site-header h1{font-size:22px;}
+  .site-header p{font-size:12px;}
+}
 
 /* ── TOP FAVES ── */
 .top-faves{padding:14px 12px 6px;}
@@ -660,6 +729,12 @@ footer a:hover{color:var(--accent);}
     <span>🔍</span> What are you playing today?
   </div>
 </nav>
+
+<!-- SEO HEADER (H1 + intro) -->
+<header class="site-header">
+  <h1>Free Unblocked Games for Kids</h1>
+  <p>Play 60+ free browser games at Dogmath — Wordle, Sonic, Mario, Cut the Rope, Fruit Ninja, Stickman Hook, and more. No downloads, no signups, just instant play in any browser. Perfect for school, kids, and quick fun.</p>
+</header>
 
 <!-- DAILY CHALLENGE -->
 <div class="daily-challenge" id="dailyChallenge" onclick="playDailyChallenge()">

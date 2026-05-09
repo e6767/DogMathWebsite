@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block the AdSense crawler from following ad links (standard practice)
+User-agent: Mediapartners-Google
+Allow: /
+
+Sitemap: https://dogmath.net/sitemap.xml
