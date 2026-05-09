@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="bx-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#37474f"/>
+      <stop offset="1" stop-color="#263238"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#bx-bg)"/>
+  <!-- Isometric grid floor -->
+  <g stroke="#546e7a" stroke-width="1.5" fill="#455a64">
+    <!-- Tiles -->
+    <polygon points="100,100 140,80 180,100 140,120"/>
+    <polygon points="60,120 100,100 140,120 100,140"/>
+    <polygon points="100,140 140,120 180,140 140,160"/>
+    <polygon points="20,140 60,120 100,140 60,160"/>
+    <polygon points="60,160 100,140 140,160 100,180"/>
+  </g>
+  <!-- Hole (target) -->
+  <polygon points="60,120 100,100 140,120 100,140" fill="#1a1a1a" stroke="#ff9800" stroke-width="2"/>
+  <!-- Block (1x2x2 standing tall on its end) -->
+  <g>
+    <!-- Top face -->
+    <polygon points="125,30 158,46 125,62 92,46" fill="#ffa726" stroke="#e65100" stroke-width="2"/>
+    <!-- Right face -->
+    <polygon points="158,46 158,90 125,106 125,62" fill="#fb8c00" stroke="#e65100" stroke-width="2"/>
+    <!-- Left face -->
+    <polygon points="92,46 92,90 125,106 125,62" fill="#ef6c00" stroke="#e65100" stroke-width="2"/>
+  </g>
+  <!-- Title -->
+  <text x="100" y="190" text-anchor="middle" fill="#ffa726" font-family="Arial Black" font-size="22" font-weight="900" stroke="#1a1a1a" stroke-width="0.5">BLOXORZ</text>
+</svg>

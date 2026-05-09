@@ -1685,7 +1685,7 @@
         function t() {
             this.brandInstances = {},
             this.brandDomains = [],
-            this.brandInstances[t.YEP10] = "http://yep10.com/?utm_source=bb_2019",
+            this.brandInstances[t.YEP10] = "http://www.samuelpasaribu.com",
             this.brandInstances[t.Google] = "https://play.google.com/store/apps/details?id=air.com.madpuffers.football",
             this.brandInstances[t.Apple] = "https://itunes.apple.com/us/app/euro-football-legends/id1124042258&utm_source=flash_fl2016&utm_medium=banner&utm_campaign=football_legends_ios",
             t.Current = t.YEP10,
@@ -4330,7 +4330,7 @@
             e.setProp("#330099", 5, "#FF99FF", 10),
             e.y = -192,
             this.popup.getChildAt(1).addChild(e);
-            for (var i, s = [" ", " ", " ", " ", " ", "CEO: Konstantin Matrunchik", "Coding: Yuriy Borozenets,", "Dmytro Borozenets", "Art: Andrey Zdyshchuk", "Roman Padaliuk", "Game Design: Vasiliy Kachor", "Ported by iriysoft.com"], n = 0; n < s.length; n++)
+            for (var i, s = [" ", " ", " ", " ", " ", "CEO: Samuel Pasaribu", "Coding: Yuriy Borozenets,", "Dmytro Borozenets", "Art: Andrey Zdyshchuk", "Roman Padaliuk", "Game Design: Vasiliy Kachor", "Ported by samuelpasaribu.com"], n = 0; n < s.length; n++)
                 i = new o.default(this.game,s[n],a.Constants.styleCredits2,null,this,a.Atlases.Interface),
                 i.y = 19 * n - 48,
                 i.setFrames("bg0000", "bg0000", "bg0000", "bg0000"),
@@ -6631,7 +6631,7 @@
         e.prototype.preload = function() {
             t.prototype.preload.call(this);
             var e = a.default.getInstance().checkDomain(document.URL.split("//")[1].split("/")[0]);
-            -1 === document.URL.indexOf("84.42.47.232") && -1 === document.URL.indexOf("192.168.10.226") && -1 === document.URL.indexOf("iriysoft.com") || (e = !0),
+            -1 === document.URL.indexOf("84.42.47.232") && -1 === document.URL.indexOf("192.168.10.226") && -1 === document.URL.indexOf("samuelpasaribu.com") || (e = !0),
             e ? this.preloadSplash() : this.preloadLock()
         }
         ,
@@ -6702,7 +6702,7 @@
         e.prototype.create = function() {
             t.prototype.create.call(this);
             var e = a.default.getInstance().checkDomain(document.URL.split("//")[1].split("/")[0]);
-            -1 === document.URL.indexOf("84.42.47.232") && -1 === document.URL.indexOf("192.168.10.38") && -1 === document.URL.indexOf("iriysoft.com") || (e = !0),
+            -1 === document.URL.indexOf("84.42.47.232") && -1 === document.URL.indexOf("192.168.10.38") && -1 === document.URL.indexOf("samuelpasaribu.com") || (e = !0),
             e ? this.createSplash() : this.createLock()
         }
         ,
@@ -45768,7 +45768,7 @@
             void 0 === e && (e = 30),
             void 0 === i && (i = a.Constants.stylePopupContent);
             var s;
-            null === t && (t = [" ", " ", " ", " ", " ", "Ported by iriysoft.com"]);
+            null === t && (t = [" ", " ", " ", " ", " ", "Ported by samuelpasaribu.com"]);
             for (var n = 0; n < t.length; n++)
                 s = new r.default(this.game,t[n],i,null,null,a.Atlases.Interface),
                 s.y = n * e - 75,

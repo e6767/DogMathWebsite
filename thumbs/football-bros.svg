@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <defs>
+    <linearGradient id="field" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a5c1a"/>
+      <stop offset="100%" stop-color="#0d3d0d"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#001f5e"/>
+      <stop offset="100%" stop-color="#1a5c1a"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" fill="url(#sky)"/>
+  <rect x="0" y="150" width="300" height="150" fill="url(#field)"/>
+  <!-- Yard lines -->
+  <line x1="75" y1="150" x2="75" y2="300" stroke="white" stroke-width="2" opacity="0.4"/>
+  <line x1="150" y1="150" x2="150" y2="300" stroke="white" stroke-width="3" opacity="0.6"/>
+  <line x1="225" y1="150" x2="225" y2="300" stroke="white" stroke-width="2" opacity="0.4"/>
+  <!-- Field hash marks -->
+  <line x1="0" y1="200" x2="300" y2="200" stroke="white" stroke-width="1" opacity="0.3"/>
+  <line x1="0" y1="250" x2="300" y2="250" stroke="white" stroke-width="1" opacity="0.3"/>
+  <!-- Goalposts -->
+  <line x1="150" y1="20" x2="150" y2="120" stroke="#f5c542" stroke-width="5"/>
+  <line x1="120" y1="20" x2="180" y2="20" stroke="#f5c542" stroke-width="5"/>
+  <line x1="120" y1="20" x2="120" y2="60" stroke="#f5c542" stroke-width="4"/>
+  <line x1="180" y1="20" x2="180" y2="60" stroke="#f5c542" stroke-width="4"/>
+  <!-- Football -->
+  <ellipse cx="150" cy="175" rx="30" ry="20" fill="#8b4513" stroke="#5c2d0a" stroke-width="2"/>
+  <line x1="120" y1="175" x2="180" y2="175" stroke="white" stroke-width="2"/>
+  <line x1="138" y1="163" x2="138" y2="187" stroke="white" stroke-width="1.5"/>
+  <line x1="150" y1="158" x2="150" y2="192" stroke="white" stroke-width="1.5"/>
+  <line x1="162" y1="163" x2="162" y2="187" stroke="white" stroke-width="1.5"/>
+  <!-- Player shadow -->
+  <ellipse cx="150" cy="225" rx="25" ry="8" fill="black" opacity="0.3"/>
+  <!-- Player rough shape -->
+  <rect x="138" y="200" width="24" height="30" rx="3" fill="#1a3a8f"/>
+  <circle cx="150" cy="195" r="12" fill="#fde68a"/>
+  <rect x="133" y="205" width="12" height="20" rx="2" fill="#1a3a8f"/>
+  <rect x="155" y="205" width="12" height="20" rx="2" fill="#1a3a8f"/>
+  <!-- Helmet -->
+  <path d="M138 190 Q150 178 162 190 L162 196 Q150 188 138 196 Z" fill="#cc1a1a"/>
+  <line x1="138" y1="193" x2="162" y2="193" stroke="#cc1a1a" stroke-width="2"/>
+  <!-- Label -->
+  <text x="150" y="272" font-family="Arial Black,sans-serif" font-size="20" font-weight="900" fill="#f5c542" text-anchor="middle" letter-spacing="-0.5">FOOTBALL BROS</text>
+</svg>

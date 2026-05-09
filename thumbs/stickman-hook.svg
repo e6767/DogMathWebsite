@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="sh-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#db2777"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#sh-bg)"/>
+  <g opacity=".25">
+    <circle cx="40" cy="40" r="3" fill="#fff"/>
+    <circle cx="160" cy="60" r="2" fill="#fff"/>
+    <circle cx="170" cy="30" r="3" fill="#fff"/>
+    <circle cx="30" cy="100" r="2" fill="#fff"/>
+    <circle cx="180" cy="160" r="3" fill="#fff"/>
+  </g>
+  <line x1="100" y1="0" x2="80" y2="100" stroke="#fde047" stroke-width="2.5"/>
+  <circle cx="100" cy="0" r="4" fill="#fde047"/>
+  <g transform="translate(80 100)" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none">
+    <circle cx="0" cy="0" r="9" fill="#fff"/>
+    <line x1="0" y1="9" x2="0" y2="38"/>
+    <line x1="0" y1="20" x2="-15" y2="0"/>
+    <line x1="0" y1="20" x2="22" y2="-5"/>
+    <line x1="0" y1="38" x2="-12" y2="60"/>
+    <line x1="0" y1="38" x2="14" y2="60"/>
+  </g>
+  <text x="100" y="190" text-anchor="middle" fill="#fff" font-family="Arial Black" font-size="20" font-weight="900">HOOK</text>
+</svg>

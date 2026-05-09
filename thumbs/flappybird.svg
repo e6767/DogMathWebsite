@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="fb-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4fc3f7"/>
+      <stop offset="1" stop-color="#b3e5fc"/>
+    </linearGradient>
+  </defs>
+  <!-- Sky -->
+  <rect width="200" height="200" fill="url(#fb-sky)"/>
+  <!-- Ground -->
+  <rect x="0" y="168" width="200" height="32" fill="#8bc34a"/>
+  <rect x="0" y="168" width="200" height="6" fill="#558b2f"/>
+  <!-- Cloud -->
+  <ellipse cx="50" cy="40" rx="24" ry="12" fill="#fff" opacity="0.9"/>
+  <ellipse cx="34" cy="44" rx="14" ry="10" fill="#fff" opacity="0.9"/>
+  <ellipse cx="66" cy="44" rx="14" ry="10" fill="#fff" opacity="0.9"/>
+  <!-- Pipe bottom -->
+  <rect x="128" y="110" width="36" height="60" fill="#4caf50"/>
+  <rect x="124" y="107" width="44" height="10" fill="#388e3c"/>
+  <!-- Pipe top -->
+  <rect x="128" y="0" width="36" height="60" fill="#4caf50"/>
+  <rect x="124" y="57" width="44" height="10" fill="#388e3c"/>
+  <!-- Bird body -->
+  <ellipse cx="72" cy="95" rx="22" ry="18" fill="#fdd835"/>
+  <!-- Wing -->
+  <ellipse cx="72" cy="102" rx="14" ry="7" fill="#f9a825" transform="rotate(-20 72 102)"/>
+  <!-- Eye white -->
+  <circle cx="82" cy="89" r="8" fill="#fff"/>
+  <!-- Pupil -->
+  <circle cx="84" cy="88" r="4" fill="#1a237e"/>
+  <circle cx="85" cy="87" r="1.5" fill="#fff"/>
+  <!-- Beak -->
+  <polygon points="90,93 106,96 90,99" fill="#f57c00"/>
+  <!-- Title -->
+  <text x="100" y="188" text-anchor="middle" fill="#fff" font-family="Arial Black" font-size="15" font-weight="900" stroke="#2e7d32" stroke-width="0.8">FLAPPY BIRD</text>
+</svg>

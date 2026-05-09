@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="iq-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9c27b0"/>
+      <stop offset="1" stop-color="#311b92"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#iq-bg)"/>
+  <!-- Floating question marks -->
+  <g opacity="0.3" fill="#fff">
+    <text x="20" y="40" font-family="Arial Black" font-size="22" font-weight="900">?</text>
+    <text x="170" y="50" font-family="Arial Black" font-size="18" font-weight="900">?</text>
+    <text x="30" y="180" font-family="Arial Black" font-size="20" font-weight="900">?</text>
+    <text x="175" y="170" font-family="Arial Black" font-size="22" font-weight="900">?</text>
+    <text x="20" y="110" font-family="Arial Black" font-size="14" font-weight="900">?</text>
+  </g>
+  <!-- Big question mark -->
+  <text x="100" y="115" text-anchor="middle" fill="#fff" font-family="Arial Black" font-size="120" font-weight="900" stroke="#fdd835" stroke-width="2">?</text>
+  <!-- Title -->
+  <text x="100" y="160" text-anchor="middle" fill="#fdd835" font-family="Arial Black" font-size="14" font-weight="900" stroke="#1a1a1a" stroke-width="0.5">THE IMPOSSIBLE</text>
+  <text x="100" y="182" text-anchor="middle" fill="#fdd835" font-family="Arial Black" font-size="22" font-weight="900" stroke="#1a1a1a" stroke-width="0.5">QUIZ</text>
+</svg>

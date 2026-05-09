@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="cr-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7dd3fc"/>
+      <stop offset="1" stop-color="#bae6fd"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#cr-sky)"/>
+  <rect x="0" y="60" width="200" height="32" fill="#22c55e"/>
+  <rect x="0" y="92" width="200" height="58" fill="#475569"/>
+  <g fill="#facc15">
+    <rect x="0" y="118" width="14" height="6"/>
+    <rect x="24" y="118" width="14" height="6"/>
+    <rect x="48" y="118" width="14" height="6"/>
+    <rect x="72" y="118" width="14" height="6"/>
+    <rect x="96" y="118" width="14" height="6"/>
+    <rect x="120" y="118" width="14" height="6"/>
+    <rect x="144" y="118" width="14" height="6"/>
+    <rect x="168" y="118" width="14" height="6"/>
+    <rect x="192" y="118" width="14" height="6"/>
+  </g>
+  <rect x="0" y="150" width="200" height="50" fill="#22c55e"/>
+  <g transform="translate(86 96)">
+    <rect x="0" y="14" width="28" height="22" fill="#fef9c3"/>
+    <rect x="0" y="14" width="28" height="3" fill="#fde68a"/>
+    <rect x="-3" y="22" width="3" height="10" fill="#fef9c3"/>
+    <rect x="28" y="22" width="3" height="10" fill="#fef9c3"/>
+    <rect x="6" y="0" width="16" height="14" fill="#fef9c3"/>
+    <rect x="6" y="0" width="16" height="3" fill="#fde68a"/>
+    <rect x="9" y="4" width="2" height="3" fill="#1f2937"/>
+    <rect x="17" y="4" width="2" height="3" fill="#1f2937"/>
+    <rect x="13" y="9" width="6" height="3" fill="#f97316"/>
+    <rect x="6" y="36" width="3" height="6" fill="#f97316"/>
+    <rect x="19" y="36" width="3" height="6" fill="#f97316"/>
+  </g>
+  <text x="100" y="36" text-anchor="middle" fill="#fff" font-family="Arial Black" font-size="18" font-weight="900" stroke="#1f2937" stroke-width="0.8">CROSSY</text>
+  <text x="100" y="54" text-anchor="middle" fill="#fff" font-family="Arial Black" font-size="14" font-weight="900" stroke="#1f2937" stroke-width="0.6">ROAD</text>
+  <rect x="160" y="170" width="30" height="20" fill="#ef4444"/>
+  <circle cx="166" cy="192" r="3" fill="#1f2937"/>
+  <circle cx="184" cy="192" r="3" fill="#1f2937"/>
+  <rect x="164" y="173" width="22" height="8" fill="#fca5a5"/>
+</svg>

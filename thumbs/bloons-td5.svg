@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="btd-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#81c784"/>
+      <stop offset="1" stop-color="#388e3c"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#btd-bg)"/>
+  <!-- Path/Track -->
+  <path d="M 0 100 Q 60 80 100 100 T 200 100" stroke="#a1887f" stroke-width="14" fill="none" opacity="0.7"/>
+  <!-- Red balloon -->
+  <ellipse cx="40" cy="60" rx="14" ry="18" fill="#e53935"/>
+  <ellipse cx="36" cy="55" rx="3" ry="5" fill="#fff" opacity="0.5"/>
+  <polygon points="38,78 42,78 40,84" fill="#e53935"/>
+  <line x1="40" y1="84" x2="40" y2="105" stroke="#3e2723" stroke-width="1"/>
+  <!-- Blue balloon -->
+  <ellipse cx="80" cy="50" rx="14" ry="18" fill="#1e88e5"/>
+  <ellipse cx="76" cy="45" rx="3" ry="5" fill="#fff" opacity="0.5"/>
+  <polygon points="78,68 82,68 80,74" fill="#1e88e5"/>
+  <line x1="80" y1="74" x2="80" y2="95" stroke="#3e2723" stroke-width="1"/>
+  <!-- Yellow balloon -->
+  <ellipse cx="120" cy="55" rx="14" ry="18" fill="#fdd835"/>
+  <ellipse cx="116" cy="50" rx="3" ry="5" fill="#fff" opacity="0.5"/>
+  <polygon points="118,73 122,73 120,79" fill="#fdd835"/>
+  <line x1="120" y1="79" x2="120" y2="100" stroke="#3e2723" stroke-width="1"/>
+  <!-- Monkey (dart) -->
+  <g transform="translate(150 110)">
+    <ellipse cx="0" cy="10" rx="20" ry="22" fill="#8d6e63"/>
+    <!-- Face -->
+    <ellipse cx="0" cy="14" rx="14" ry="12" fill="#ffe0b2"/>
+    <!-- Ears -->
+    <circle cx="-15" cy="0" r="6" fill="#8d6e63"/>
+    <circle cx="15" cy="0" r="6" fill="#8d6e63"/>
+    <!-- Eyes -->
+    <circle cx="-5" cy="10" r="2" fill="#1a1a1a"/>
+    <circle cx="5" cy="10" r="2" fill="#1a1a1a"/>
+    <!-- Smile -->
+    <path d="M -5 18 Q 0 22 5 18" stroke="#1a1a1a" stroke-width="1.5" fill="none"/>
+  </g>
+  <!-- Dart flying -->
+  <g transform="translate(50 105) rotate(-10)">
+    <polygon points="0,0 -16,-2 -16,2" fill="#a1887f"/>
+    <polygon points="0,0 4,-3 4,3" fill="#37474f"/>
+  </g>
+  <!-- Title -->
+  <text x="100" y="190" text-anchor="middle" fill="#fff" font-family="Arial Black" font-size="16" font-weight="900" stroke="#1b5e20" stroke-width="0.8">BLOONS TD</text>
+</svg>

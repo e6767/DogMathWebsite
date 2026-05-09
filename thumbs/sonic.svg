@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="sonic-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0277bd"/>
+      <stop offset="1" stop-color="#01579b"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#sonic-bg)"/>
+  <!-- Speed lines -->
+  <g stroke="#fff" stroke-width="2" opacity="0.4">
+    <line x1="0" y1="60" x2="40" y2="60"/>
+    <line x1="0" y1="100" x2="60" y2="100"/>
+    <line x1="0" y1="140" x2="40" y2="140"/>
+    <line x1="160" y1="80" x2="200" y2="80"/>
+  </g>
+  <!-- Gold rings -->
+  <circle cx="160" cy="50" r="14" fill="none" stroke="#fdd835" stroke-width="5"/>
+  <circle cx="35" cy="170" r="10" fill="none" stroke="#fdd835" stroke-width="4"/>
+  <!-- Sonic body (blue ball) -->
+  <circle cx="100" cy="105" r="40" fill="#1565c0"/>
+  <circle cx="100" cy="105" r="40" fill="#1976d2" opacity="0.7"/>
+  <!-- Spike quills -->
+  <polygon points="68,90 50,75 75,95" fill="#1565c0"/>
+  <polygon points="62,105 38,108 70,115" fill="#1565c0"/>
+  <polygon points="68,125 48,140 80,128" fill="#1565c0"/>
+  <!-- Face (peach) -->
+  <ellipse cx="115" cy="105" rx="22" ry="20" fill="#ffccbc"/>
+  <!-- Eyes (big) -->
+  <ellipse cx="108" cy="98" rx="8" ry="11" fill="#fff"/>
+  <ellipse cx="125" cy="98" rx="8" ry="11" fill="#fff"/>
+  <ellipse cx="111" cy="100" rx="3" ry="5" fill="#1a1a1a"/>
+  <ellipse cx="128" cy="100" rx="3" ry="5" fill="#1a1a1a"/>
+  <!-- Nose -->
+  <ellipse cx="132" cy="113" rx="4" ry="3" fill="#1a1a1a"/>
+  <!-- Smile -->
+  <path d="M 120 120 Q 128 126 136 120" stroke="#1a1a1a" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Title -->
+  <text x="100" y="185" text-anchor="middle" fill="#fdd835" font-family="Arial Black" font-size="22" font-weight="900" stroke="#1565c0" stroke-width="0.8">SONIC</text>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="dh-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1a2e"/>
+      <stop offset="1" stop-color="#16213e"/>
+    </linearGradient>
+    <linearGradient id="dh-smoke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#fff" stop-opacity=".6"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#dh-bg)"/>
+  <g opacity=".3">
+    <line x1="0" y1="160" x2="200" y2="160" stroke="#fff" stroke-width="1" stroke-dasharray="6 6"/>
+    <line x1="0" y1="180" x2="200" y2="180" stroke="#fff" stroke-width="1" stroke-dasharray="6 6"/>
+  </g>
+  <ellipse cx="40" cy="135" rx="50" ry="8" fill="url(#dh-smoke)"/>
+  <ellipse cx="20" cy="125" rx="35" ry="6" fill="url(#dh-smoke)"/>
+  <g transform="translate(95 110)">
+    <path d="M0 20 L10 5 L60 0 L80 0 L90 8 L90 25 L80 30 L10 30 L0 25 Z" fill="#dc2626"/>
+    <path d="M15 5 L60 2 L75 5 L75 15 L15 15 Z" fill="#7f1d1d"/>
+    <circle cx="20" cy="30" r="9" fill="#0f172a"/>
+    <circle cx="20" cy="30" r="4" fill="#475569"/>
+    <circle cx="72" cy="30" r="9" fill="#0f172a"/>
+    <circle cx="72" cy="30" r="4" fill="#475569"/>
+  </g>
+  <text x="100" y="50" text-anchor="middle" fill="#f59e0b" font-family="Arial Black" font-size="22" font-weight="900">DRIFT</text>
+  <text x="100" y="74" text-anchor="middle" fill="#fff" font-family="Arial Black" font-size="18" font-weight="900">HUNTERS</text>
+</svg>

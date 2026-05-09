@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="sk-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e1b4b"/>
+      <stop offset="1" stop-color="#312e81"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#sk-bg)"/>
+
+  <!-- block layer 1 (bottom, widest) -->
+  <rect x="35" y="140" width="130" height="22" rx="3" fill="#f472b6"/>
+  <rect x="35" y="140" width="130" height="6" rx="3" fill="#fb7bb8"/>
+  <rect x="35" y="156" width="130" height="6" rx="2" fill="#c2185b" opacity="0.4"/>
+
+  <!-- block layer 2 -->
+  <rect x="48" y="116" width="104" height="22" rx="3" fill="#fb923c"/>
+  <rect x="48" y="116" width="104" height="6" rx="3" fill="#fdba74"/>
+  <rect x="48" y="132" width="104" height="6" rx="2" fill="#c2410c" opacity="0.4"/>
+
+  <!-- block layer 3 -->
+  <rect x="62" y="92" width="76" height="22" rx="3" fill="#facc15"/>
+  <rect x="62" y="92" width="76" height="6" rx="3" fill="#fde68a"/>
+  <rect x="62" y="108" width="76" height="6" rx="2" fill="#92400e" opacity="0.4"/>
+
+  <!-- block layer 4 -->
+  <rect x="72" y="68" width="56" height="22" rx="3" fill="#4ade80"/>
+  <rect x="72" y="68" width="56" height="6" rx="3" fill="#86efac"/>
+  <rect x="72" y="84" width="56" height="6" rx="2" fill="#166534" opacity="0.4"/>
+
+  <!-- block layer 5 (top, narrowest) -->
+  <rect x="82" y="44" width="36" height="22" rx="3" fill="#38bdf8"/>
+  <rect x="82" y="44" width="36" height="6" rx="3" fill="#7dd3fc"/>
+  <rect x="82" y="60" width="36" height="6" rx="2" fill="#0369a1" opacity="0.4"/>
+
+  <text x="100" y="186" text-anchor="middle" fill="#e0e7ff" font-family="Arial Black, sans-serif" font-size="16" font-weight="900" letter-spacing="2">STACK</text>
+</svg>

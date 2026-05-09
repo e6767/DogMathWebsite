@@ -4,21 +4,40 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Dogmath - Free Unblocked Games</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="apple-touch-icon" href="favicon.svg"/>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet"/>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9208686180473353" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-9208686180473353"/>
+<!-- canvas-confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --bg:#f0f0f0;
-  --white:#fff;
-  --accent:#22c55e;
-  --accent-dark:#16a34a;
-  --text:#1a1a1a;
-  --muted:#888;
-  --border:#e0e0e0;
+  --bg:#1e1b4b;
+  --white:#2e2a78;
+  --accent:#f59e0b;
+  --accent-dark:#d97706;
+  --text:#ede9fe;
+  --muted:#a5b4fc;
+  --border:#3730a3;
   --radius:10px;
   --font:'Nunito',sans-serif;
 }
+html[data-theme="light"]{
+  --bg:#faf5ff;
+  --white:#ffffff;
+  --text:#1e1b4b;
+  --muted:#7c3aed;
+  --border:#e9d5ff;
+}
+html[data-theme="light"] body::before{
+  background:radial-gradient(ellipse at 20% 0%,#a78bfa20 0%,transparent 60%),radial-gradient(ellipse at 80% 100%,#f59e0b18 0%,transparent 60%);
+}
 body{background:var(--bg);font-family:var(--font);color:var(--text);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 0%,#4c1d9520 0%,transparent 60%),radial-gradient(ellipse at 80% 100%,#7c3aed18 0%,transparent 60%);pointer-events:none;z-index:0;}
+.grid-wrap,.game-modal,.search-overlay,nav,footer{position:relative;z-index:1;}
 
 /* ── NAV ── */
 nav{
@@ -58,36 +77,304 @@ nav{
 }
 .nav-search-btn:hover{border-color:var(--accent);}
 
+/* ── TOP FAVES ── */
+.top-faves{padding:14px 12px 6px;}
+.top-faves:first-of-type{padding-top:40px;}
+.top-faves + .top-faves{margin-top:32px;}
+.top-faves-header{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;padding:0 4px;}
+.top-faves-header h2{
+  font-size:26px;font-weight:900;letter-spacing:-0.6px;
+  background:linear-gradient(90deg,#f59e0b,#ec4899 55%,#a855f7);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;
+}
+.top-played .top-faves-header h2{
+  background:linear-gradient(90deg,#a855f7,#3b82f6 55%,#22d3ee);
+  -webkit-background-clip:text;background-clip:text;
+}
+.new-games .top-faves-header h2{
+  background:linear-gradient(90deg,#22c55e,#06b6d4 55%,#3b82f6);
+  -webkit-background-clip:text;background-clip:text;
+}
+.new-games .fave-card .fave-rank{
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+  color:#fff;width:auto;height:18px;
+  padding:0 8px;border-radius:9px;
+  font-size:9px;letter-spacing:0.5px;
+}
+.top-faves-sub{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.6px;}
+.top-faves-row{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+  max-width:560px;margin:0;
+}
+@media (max-width:640px){
+  .top-faves-row{grid-template-columns:repeat(3,1fr);max-width:none;gap:6px;}
+}
+.fave-card{
+  position:relative;border-radius:12px;overflow:hidden;cursor:pointer;
+  background:#1a1a2e;aspect-ratio:16/9;
+  transition:transform 0.12s,box-shadow 0.12s;
+  border:1.5px solid var(--border);
+}
+.fave-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.4);}
+.fave-card img{width:100%;height:100%;object-fit:cover;display:block;}
+.fave-card .fave-rank{
+  position:absolute;top:6px;left:6px;
+  width:24px;height:24px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:900;color:#1a1a2e;
+  box-shadow:0 2px 6px rgba(0,0,0,0.4);
+}
+.fave-card.rank-1 .fave-rank{background:linear-gradient(135deg,#fde047,#f59e0b);}
+.fave-card.rank-2 .fave-rank{background:linear-gradient(135deg,#e5e7eb,#9ca3af);}
+.fave-card.rank-3 .fave-rank{background:linear-gradient(135deg,#fcd34d,#b45309);color:#fff;}
+.top-played .fave-card.rank-1 .fave-rank{background:linear-gradient(135deg,#a78bfa,#7c3aed);color:#fff;}
+.top-played .fave-card.rank-2 .fave-rank{background:linear-gradient(135deg,#c4b5fd,#8b5cf6);color:#fff;}
+.top-played .fave-card.rank-3 .fave-rank{background:linear-gradient(135deg,#ddd6fe,#a855f7);color:#fff;}
+.top-played{margin-bottom:36px;}
+.fave-card .fave-info{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:16px 8px 6px;
+  background:linear-gradient(to top,rgba(0,0,0,0.92),transparent);
+  display:flex;justify-content:space-between;align-items:flex-end;gap:6px;
+}
+.fave-card .fave-name{font-size:11px;font-weight:900;color:#fff;letter-spacing:-0.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.fave-card .fave-stats{display:flex;flex-direction:row;gap:4px;align-items:center;flex-shrink:0;}
+.fave-card .fave-likes,.fave-card .fave-plays{
+  font-size:10px;font-weight:800;color:#fff;
+  padding:2px 6px;border-radius:8px;
+  display:inline-flex;align-items:center;gap:2px;
+}
+.fave-card .fave-likes{background:rgba(34,197,94,0.95);}
+.fave-card .fave-plays{background:rgba(124,58,237,0.95);}
+.top-faves.empty .top-faves-row{display:none;}
+.top-faves.empty::after{
+  content:'No likes yet — be the first to vote!';
+  display:block;color:var(--muted);font-size:13px;font-weight:700;
+  text-align:center;padding:20px;
+  background:var(--white);border:1px dashed var(--border);border-radius:10px;margin:0 4px;
+}
+
+/* ── TOP SECTION 2-COL LAYOUT ── */
+.top-section{
+  display:grid;
+  grid-template-columns:minmax(0,640px) minmax(260px,320px);
+  gap:28px;
+  padding-right:12px;
+  align-items:start;
+}
+.top-section-left > .top-faves:first-of-type{padding-top:40px;}
+.top-section-right{
+  display:flex;flex-direction:column;gap:18px;
+  padding-top:40px;
+  position:sticky;top:12px;
+}
+@media (max-width:980px){
+  .top-section{grid-template-columns:1fr;gap:16px;}
+  .top-section-right{position:static;padding-top:0;padding:0 12px;}
+}
+
+/* ── ROULETTE WIDGET ── */
+.widget{
+  background:var(--white);border:1.5px solid var(--border);border-radius:16px;
+  padding:14px 14px 16px;box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+.widget-title{
+  font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:0.8px;
+  color:var(--muted);margin-bottom:10px;
+}
+.roulette-display{
+  position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;
+  overflow:hidden;background:#1a1a2e;margin-bottom:10px;
+  border:2px solid var(--border);
+}
+.roulette-display img{width:100%;height:100%;object-fit:cover;display:block;}
+.roulette-display.spinning img{filter:blur(2px);}
+.roulette-display .roulette-name{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,rgba(0,0,0,0.92),transparent);
+  color:#fff;font-size:14px;font-weight:900;
+  padding:14px 10px 8px;text-align:center;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.roulette-btn{
+  width:100%;padding:12px;border:none;border-radius:12px;
+  background:linear-gradient(135deg,#f59e0b,#ec4899 50%,#a855f7);
+  color:#fff;font-size:16px;font-weight:900;letter-spacing:0.5px;
+  cursor:pointer;box-shadow:0 4px 12px rgba(236,72,153,0.4);
+  transition:transform 0.1s,box-shadow 0.1s;
+}
+.roulette-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 6px 18px rgba(236,72,153,0.5);}
+.roulette-btn:active:not(:disabled){transform:translateY(0);}
+.roulette-btn:disabled{opacity:0.7;cursor:wait;}
+
+/* ── STREAK WIDGET ── */
+.streak-widget{
+  background:linear-gradient(135deg,#fef3c7,#fed7aa);
+  border:1.5px solid #f59e0b;
+}
+[data-theme="light"] .streak-widget{background:linear-gradient(135deg,#fef3c7,#fed7aa);}
+.streak-flame{
+  font-size:48px;text-align:center;line-height:1;margin-bottom:4px;
+  filter:drop-shadow(0 2px 4px rgba(245,158,11,0.5));
+}
+.streak-num{
+  text-align:center;font-size:42px;font-weight:900;color:#b45309;
+  line-height:1;letter-spacing:-1px;
+}
+.streak-label{
+  text-align:center;font-size:11px;font-weight:800;color:#92400e;
+  text-transform:uppercase;letter-spacing:1px;margin-top:4px;
+}
+.streak-stats{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;
+  margin-top:12px;padding-top:12px;border-top:1px dashed #f59e0b80;
+}
+.streak-stat{text-align:center;}
+.streak-stat-num{font-size:18px;font-weight:900;color:#b45309;line-height:1;}
+.streak-stat-label{font-size:9px;font-weight:700;color:#92400e;text-transform:uppercase;letter-spacing:0.4px;margin-top:2px;}
+
+/* ── DAILY CHALLENGE BANNER ── */
+.daily-challenge{
+  margin:14px 12px 0;padding:18px 20px;border-radius:18px;
+  background:linear-gradient(135deg,#8b5cf6,#ec4899 50%,#f59e0b);
+  display:flex;align-items:center;gap:18px;
+  box-shadow:0 8px 24px rgba(139,92,246,0.35);
+  position:relative;overflow:hidden;color:#fff;
+}
+.daily-challenge::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 80% -20%,rgba(255,255,255,0.25),transparent 60%);
+  pointer-events:none;
+}
+.dc-thumb{
+  width:90px;height:90px;border-radius:14px;flex-shrink:0;
+  object-fit:cover;border:3px solid rgba(255,255,255,0.6);
+  box-shadow:0 4px 12px rgba(0,0,0,0.3);
+}
+.dc-content{flex:1;min-width:0;position:relative;z-index:1;}
+.dc-tag{
+  display:inline-block;font-size:10px;font-weight:900;
+  text-transform:uppercase;letter-spacing:1.2px;
+  background:rgba(0,0,0,0.25);padding:3px 10px;border-radius:8px;
+  margin-bottom:6px;
+}
+.dc-name{font-size:22px;font-weight:900;letter-spacing:-0.5px;line-height:1.1;margin-bottom:4px;}
+.dc-sub{font-size:12px;font-weight:700;opacity:0.92;}
+.dc-sub .done-badge{
+  display:inline-block;background:#22c55e;color:#fff;
+  padding:2px 8px;border-radius:6px;font-size:10px;font-weight:900;
+  text-transform:uppercase;letter-spacing:0.5px;margin-left:6px;
+}
+.dc-btn{
+  background:#fff;color:#8b5cf6;border:none;
+  padding:10px 18px;border-radius:10px;
+  font-size:14px;font-weight:900;cursor:pointer;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  transition:transform 0.12s;flex-shrink:0;position:relative;z-index:1;
+}
+.dc-btn:hover{transform:translateY(-2px);}
+@media (max-width:560px){
+  .daily-challenge{flex-direction:column;text-align:center;gap:12px;}
+  .dc-name{font-size:18px;}
+}
+
+/* ── DOG MASCOT ── */
+.mascot{
+  position:fixed;bottom:18px;left:18px;z-index:90;
+  display:flex;align-items:flex-end;gap:8px;pointer-events:none;
+}
+.mascot.hidden{display:none;}
+.mascot-bubble{
+  background:#fff;color:#1a1a2e;
+  padding:10px 14px;border-radius:18px;border-bottom-left-radius:4px;
+  font-size:13px;font-weight:700;max-width:240px;line-height:1.35;
+  box-shadow:0 6px 18px rgba(0,0,0,0.18);
+  border:1.5px solid var(--border);
+  pointer-events:auto;cursor:pointer;
+  opacity:0;transform:translateY(8px);
+  transition:opacity 0.25s,transform 0.25s;
+  position:relative;
+}
+.mascot-bubble.show{opacity:1;transform:translateY(0);}
+.mascot-bubble::after{
+  content:'×';position:absolute;top:2px;right:6px;
+  font-size:14px;color:var(--muted);font-weight:900;
+}
+.mascot-dog{
+  width:64px;height:64px;
+  background:#fff;border-radius:50%;
+  border:2.5px solid var(--border);
+  box-shadow:0 6px 18px rgba(0,0,0,0.2);
+  padding:6px;flex-shrink:0;
+  pointer-events:auto;cursor:pointer;
+  transition:transform 0.2s;
+}
+.mascot-dog:hover{transform:scale(1.08) rotate(-4deg);}
+.mascot-dog.bounce{animation:mascotBounce 0.6s ease;}
+@keyframes mascotBounce{
+  0%,100%{transform:translateY(0);}
+  30%{transform:translateY(-12px) rotate(-6deg);}
+  60%{transform:translateY(-4px) rotate(4deg);}
+}
+
 /* ── GAME GRID ── */
-.grid-wrap{padding:8px;}
+.grid-wrap{padding:4px;}
 .game-mosaic{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(88px,1fr));
-  gap:5px;
+  grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+  grid-auto-rows:170px;
+  gap:4px;
+  grid-auto-flow:dense;
 }
 .game-tile{
-  border-radius:var(--radius);overflow:hidden;cursor:pointer;
-  position:relative;background:var(--white);aspect-ratio:1;
-  transition:transform 0.12s,box-shadow 0.12s;
+  border-radius:6px;overflow:hidden;cursor:pointer;
+  position:relative;background:#1a1a2e;
+  transition:transform 0.1s,box-shadow 0.1s;
 }
-.game-tile.big{grid-column:span 2;grid-row:span 2;aspect-ratio:auto;}
-.game-tile.wide{grid-column:span 3;aspect-ratio:2.8/1;}
-.game-tile:hover{transform:scale(1.04);box-shadow:0 6px 20px rgba(0,0,0,0.18);z-index:2;}
+.game-tile.big   {grid-column:span 2;grid-row:span 2;}
+.game-tile.wide  {grid-column:span 2;grid-row:span 1;}
+.game-tile.tall  {grid-column:span 1;grid-row:span 2;}
+.game-tile.bigtall{grid-column:span 2;grid-row:span 3;}
+.game-tile.bigwide{grid-column:span 3;grid-row:span 2;}
+.game-tile.xl    {grid-column:span 3;grid-row:span 3;}
+.game-tile:hover{transform:scale(1.03);box-shadow:0 4px 20px rgba(0,0,0,0.5);z-index:2;}
 .fake-thumb{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:34px;}
 .game-tile.big .fake-thumb{font-size:72px;}
 .game-tile.wide .fake-thumb{font-size:40px;gap:8px;}
+.game-thumb{width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;}
+.popup-thumb img{width:128px;height:128px;object-fit:cover;border-radius:12px;display:block;}
+.result-icon img{width:46px;height:46px;object-fit:cover;border-radius:10px;display:block;}
 .tile-label{
   position:absolute;bottom:0;left:0;right:0;
-  padding:18px 7px 5px;
-  background:linear-gradient(to top,rgba(0,0,0,0.72),transparent);
-  font-size:11px;font-weight:800;color:#fff;
+  padding:22px 6px 6px;
+  background:linear-gradient(to top,rgba(0,0,0,0.85),transparent);
+  font-size:11px;font-weight:800;color:#fff;letter-spacing:0.2px;
   opacity:0;transition:opacity 0.15s;pointer-events:none;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
 .game-tile:hover .tile-label{opacity:1;}
+
 .badge{position:absolute;top:5px;left:5px;font-size:9px;font-weight:900;padding:2px 6px;border-radius:5px;pointer-events:none;}
 .badge-hot{background:#f97316;color:#fff;}
 .badge-new{background:#22c55e;color:#fff;}
 .badge-top{background:#a855f7;color:#fff;}
+
+/* ── LIKE BUTTON ── */
+.like-btn{
+  position:absolute;top:5px;right:5px;
+  background:rgba(0,0,0,0.7);border:none;color:#fff;
+  border-radius:14px;padding:3px 8px 3px 6px;
+  font-size:11px;font-weight:800;font-family:var(--font);
+  display:flex;align-items:center;gap:4px;
+  cursor:pointer;z-index:3;
+  transition:background 0.15s,transform 0.1s;
+  backdrop-filter:blur(4px);
+}
+.game-tile:hover .like-btn{background:rgba(0,0,0,0.9);}
+.like-btn:hover{transform:scale(1.1);}
+.like-btn.liked{background:#22c55e;cursor:default;}
+.like-btn .like-icon{font-size:13px;line-height:1;}
 
 /* ── SEARCH OVERLAY ── */
 .search-overlay{
@@ -156,15 +443,164 @@ nav{
 /* ── GAME MODAL ── */
 .game-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:600;flex-direction:column;align-items:center;justify-content:center;}
 .game-modal.open{display:flex;}
-.game-modal-inner{background:#111;border-radius:16px;width:92%;max-width:920px;overflow:hidden;}
-.game-modal-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#0a0a0a;}
+.game-modal-inner{background:#111;border-radius:16px;width:92%;max-width:920px;overflow:hidden;display:flex;flex-direction:column;}
+.game-modal-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#0a0a0a;flex-shrink:0;}
+.game-modal-actions{display:flex;gap:8px;}
 .game-modal-title{color:#fff;font-weight:900;font-size:15px;}
-.game-modal-close{background:#2a2a2a;border:none;color:#fff;border-radius:8px;padding:6px 14px;cursor:pointer;font-family:var(--font);font-weight:800;font-size:13px;}
-.game-modal-close:hover{background:#3a3a3a;}
+.game-modal-title .play-meta{color:#a5b4fc;font-weight:700;font-size:12px;margin-left:4px;}
+.game-modal-btn{background:#2a2a2a;border:none;color:#fff;border-radius:8px;padding:6px 14px;cursor:pointer;font-family:var(--font);font-weight:800;font-size:13px;display:inline-flex;align-items:center;gap:6px;}
+.game-modal-btn:hover{background:#3a3a3a;}
+.game-modal-btn.fs{background:var(--accent);color:#1a1a2e;}
+.game-modal-btn.fs:hover{background:var(--accent-dark);color:#fff;}
+.game-modal-btn.like{background:#1a1a1a;}
+.game-modal-btn.like:hover{background:#262626;}
+.game-modal-btn.like.liked{background:#22c55e;color:#fff;cursor:default;}
+.game-modal-btn.like .modal-like-count{font-weight:900;}
 .game-modal-body{background:#000;min-height:480px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:40px 20px;text-align:center;color:#666;font-size:13px;}
+.game-modal-body iframe{width:100%;height:550px;border:0;display:block;}
+.game-ad-slot{background:#0a0a0a;border-bottom:1px solid #1a1a1a;padding:8px;min-height:100px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.game-ad-slot ins.adsbygoogle{display:block;width:100%;max-width:728px;}
+/* Hide ad slot in fullscreen so the game has the whole screen */
+.game-modal-inner:fullscreen .game-ad-slot,
+.game-modal-inner:-webkit-full-screen .game-ad-slot{display:none;}
+/* Real fullscreen: when the inner element is fullscreened by the API */
+.game-modal-inner:fullscreen,
+.game-modal-inner:-webkit-full-screen{width:100vw;height:100vh;max-width:none;border-radius:0;}
+.game-modal-inner:fullscreen .game-modal-body,
+.game-modal-inner:-webkit-full-screen .game-modal-body{flex:1;min-height:0;padding:0;}
+.game-modal-inner:fullscreen .game-modal-body iframe,
+.game-modal-inner:-webkit-full-screen .game-modal-body iframe{width:100%;height:100%;}
 .game-emoji{font-size:54px;margin-bottom:4px;}
 .game-modal-body strong{color:#fff;font-size:17px;display:block;}
 .iframe-hint{background:#1a1a1a;border-radius:8px;padding:10px 16px;font-size:12px;color:#4ade80;font-family:monospace;margin-top:4px;}
+
+/* ── PROFILE DRAWER ── */
+.profile-drawer{
+  display:none;position:fixed;inset:0;z-index:550;
+  background:rgba(0,0,0,0.45);
+}
+.profile-drawer.open{display:block;}
+.profile-panel{
+  position:absolute;top:0;right:0;bottom:0;width:360px;max-width:90vw;
+  background:var(--white);border-left:1px solid var(--border);
+  display:flex;flex-direction:column;
+  animation:slideInRight 0.22s ease;
+  overflow-y:auto;
+}
+@keyframes slideInRight{from{transform:translateX(100%);}to{transform:translateX(0);}}
+.profile-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 18px 12px;border-bottom:1px solid var(--border);
+  position:sticky;top:0;background:var(--white);z-index:1;
+}
+.profile-header h2{
+  font-size:20px;font-weight:900;letter-spacing:-0.4px;
+  background:linear-gradient(90deg,#f59e0b,#ec4899);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.profile-close{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--bg);border:none;cursor:pointer;
+  font-size:16px;font-weight:700;color:var(--text);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font);
+}
+.profile-close:hover{background:var(--border);}
+.profile-section{padding:14px 18px;}
+.profile-section + .profile-section{border-top:1px solid var(--border);}
+.profile-section-title{
+  font-size:11px;font-weight:900;color:var(--muted);
+  letter-spacing:0.7px;text-transform:uppercase;margin-bottom:10px;
+}
+.profile-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.profile-card{
+  position:relative;border-radius:8px;overflow:hidden;cursor:pointer;
+  background:#1a1a2e;aspect-ratio:1;
+  transition:transform 0.1s;
+}
+.profile-card:hover{transform:scale(1.04);}
+.profile-card img{width:100%;height:100%;object-fit:cover;display:block;}
+.profile-card .profile-card-label{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:14px 6px 5px;
+  background:linear-gradient(to top,rgba(0,0,0,0.92),transparent);
+  font-size:10px;font-weight:800;color:#fff;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.profile-empty{
+  font-size:12px;color:var(--muted);font-weight:700;
+  padding:12px;background:var(--bg);border-radius:8px;text-align:center;
+  border:1px dashed var(--border);
+}
+.profile-stat-pill{
+  display:inline-block;background:var(--bg);
+  padding:3px 9px;border-radius:10px;
+  font-size:11px;font-weight:800;color:var(--muted);
+  margin-left:6px;
+}
+.profile-greeting{
+  display:flex;align-items:center;gap:10px;
+  padding:14px 18px;background:var(--bg);
+  border-bottom:1px solid var(--border);
+}
+.profile-greeting .greet-text{
+  font-size:15px;font-weight:900;color:var(--text);flex:1;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.profile-greeting .nickname{
+  background:linear-gradient(90deg,#f59e0b,#ec4899);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.profile-greeting button{
+  background:transparent;border:1.5px solid var(--border);
+  color:var(--muted);padding:5px 10px;border-radius:8px;
+  font-family:var(--font);font-weight:800;font-size:11px;
+  cursor:pointer;transition:border-color 0.15s,color 0.15s;
+}
+.profile-greeting button:hover{border-color:var(--accent);color:var(--accent);}
+.nickname-edit-row{display:flex;gap:6px;width:100%;}
+.nickname-edit-row input{
+  flex:1;background:var(--white);border:1.5px solid var(--border);
+  border-radius:8px;padding:6px 10px;font-family:var(--font);font-size:14px;
+  font-weight:700;color:var(--text);outline:none;
+}
+.nickname-edit-row input:focus{border-color:var(--accent);}
+.nickname-edit-row button.save{
+  background:var(--accent);color:#1a1a2e;border-color:var(--accent);
+}
+.nickname-edit-row button.save:hover{background:var(--accent-dark);color:#fff;border-color:var(--accent-dark);}
+.profile-settings-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 0;font-size:13px;font-weight:700;color:var(--text);
+}
+.theme-toggle{
+  display:inline-flex;background:var(--bg);border:1.5px solid var(--border);
+  border-radius:20px;padding:2px;gap:0;
+}
+.theme-toggle button{
+  background:transparent;border:none;color:var(--muted);
+  padding:4px 12px;border-radius:16px;cursor:pointer;
+  font-family:var(--font);font-weight:800;font-size:11px;
+  transition:background 0.15s,color 0.15s;
+}
+.theme-toggle button.active{background:var(--accent);color:#1a1a2e;}
+.btn-danger{
+  background:transparent;border:1.5px solid #ef4444;color:#ef4444;
+  padding:8px 14px;border-radius:8px;cursor:pointer;
+  font-family:var(--font);font-weight:800;font-size:12px;width:100%;
+  transition:background 0.15s,color 0.15s;
+}
+.btn-danger:hover{background:#ef4444;color:#fff;}
+
+/* ── BOTTOM AD ── */
+.bottom-ad-wrap{
+  margin:16px auto;padding:8px 12px;
+  max-width:970px;min-height:100px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--white);border:1px solid var(--border);
+  border-radius:10px;
+}
+.bottom-ad-wrap ins.adsbygoogle{display:block;width:100%;}
 
 /* ── FOOTER ── */
 footer{border-top:1px solid var(--border);background:var(--white);padding:14px 20px;margin-top:8px;display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:700;color:var(--muted);flex-wrap:wrap;gap:8px;}
@@ -212,7 +648,7 @@ footer a:hover{color:var(--accent);}
       <div class="logo-name">dogmath</div>
     </div>
     <div class="logo-bottom">
-      <button class="logo-btn" onclick="event.preventDefault()">
+      <button class="logo-btn" onclick="event.preventDefault();event.stopPropagation();openProfile()">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
       </button>
       <button class="logo-btn" onclick="event.preventDefault();openSearch()">
@@ -225,153 +661,269 @@ footer a:hover{color:var(--accent);}
   </div>
 </nav>
 
+<!-- DAILY CHALLENGE -->
+<div class="daily-challenge" id="dailyChallenge" onclick="playDailyChallenge()">
+  <img class="dc-thumb" id="dcThumb" src="" alt="">
+  <div class="dc-content">
+    <span class="dc-tag">🎯 Today's Challenge</span>
+    <div class="dc-name" id="dcName"></div>
+    <div class="dc-sub" id="dcSub">Play it to keep your streak alive!</div>
+  </div>
+  <button class="dc-btn">▶ PLAY</button>
+</div>
+
+<!-- TOP SECTION (LEADERBOARDS + WIDGETS) -->
+<div class="top-section">
+  <div class="top-section-left">
+    <!-- LATEST 3 NEW GAMES -->
+    <section class="top-faves new-games" id="newGames">
+      <div class="top-faves-header">
+        <h2>✨ Just Added</h2>
+        <span class="top-faves-sub">Latest 3 games</span>
+      </div>
+      <div class="top-faves-row" id="newGamesRow"></div>
+    </section>
+
+    <!-- TOP 3 FAVORITE GAMES -->
+    <section class="top-faves" id="topFaves">
+      <div class="top-faves-header">
+        <h2>🏆 Top 3 Favorite Games</h2>
+        <span class="top-faves-sub">Voted by players</span>
+      </div>
+      <div class="top-faves-row" id="topFavesRow">
+        <!-- populated by JS -->
+      </div>
+    </section>
+
+    <!-- TOP 3 MOST PLAYED -->
+    <section class="top-faves top-played" id="topPlayed">
+      <div class="top-faves-header">
+        <h2>🎮 Top 3 Most Played</h2>
+        <span class="top-faves-sub">By play count</span>
+      </div>
+      <div class="top-faves-row" id="topPlayedRow">
+        <!-- populated by JS -->
+      </div>
+    </section>
+  </div>
+
+  <aside class="top-section-right">
+    <!-- ROULETTE -->
+    <div class="widget roulette-widget">
+      <div class="widget-title">🎰 Game Roulette</div>
+      <div class="roulette-display" id="rouletteDisplay">
+        <img src="thumbs/crossy-road.svg" id="rouletteImg" alt="">
+        <div class="roulette-name" id="rouletteName">Press SPIN to play a random game!</div>
+      </div>
+      <button class="roulette-btn" id="rouletteBtn" onclick="spinRoulette()">🎲 SPIN!</button>
+    </div>
+
+    <!-- STREAK -->
+    <div class="widget streak-widget" id="streakWidget">
+      <div class="streak-flame" id="streakFlame">🔥</div>
+      <div class="streak-num" id="streakNum">0</div>
+      <div class="streak-label">Day Streak</div>
+      <div class="streak-stats">
+        <div class="streak-stat">
+          <div class="streak-stat-num" id="bestStreakNum">0</div>
+          <div class="streak-stat-label">Best</div>
+        </div>
+        <div class="streak-stat">
+          <div class="streak-stat-num" id="totalPlaysNum">0</div>
+          <div class="streak-stat-label">Plays</div>
+        </div>
+        <div class="streak-stat">
+          <div class="streak-stat-num" id="totalLikesNum">0</div>
+          <div class="streak-stat-label">Likes</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>
+
 <!-- GAME GRID -->
 <div class="grid-wrap">
   <div class="game-mosaic">
 
-    <div class="game-tile big" onclick="openGame('Slope','⛳','linear-gradient(135deg,#4ade80,#16a34a)')" data-genre="Skill">
-      <div class="fake-thumb" style="background:linear-gradient(135deg,#4ade80,#16a34a);">⛳</div>
+    <div class="game-tile xl" onclick="openGame('Slope')" data-genre="Skill">
+      <img class="game-thumb" src="thumbs/slope.png" alt="Slope">
       <div class="tile-label">Slope</div>
       <span class="badge badge-hot">HOT</span>
     </div>
-    <div class="game-tile" onclick="openGame('Drift King','🏎️','#fbbf24')" data-genre="Racing">
-      <div class="fake-thumb" style="background:#fbbf24;">🏎️</div>
-      <div class="tile-label">Drift King</div>
-      <span class="badge badge-hot">HOT</span>
-    </div>
-    <div class="game-tile" onclick="openGame('Squid Game','🦑','#60a5fa')" data-genre="Action">
-      <div class="fake-thumb" style="background:#60a5fa;">🦑</div>
-      <div class="tile-label">Squid Game</div>
-    </div>
-    <div class="game-tile" onclick="openGame('Stickman','🤺','#f87171')" data-genre="Action">
-      <div class="fake-thumb" style="background:#f87171;">🤺</div>
-      <div class="tile-label">Stickman</div>
-    </div>
-    <div class="game-tile" onclick="openGame('GTA Online','🚗','#a78bfa')" data-genre="Action">
-      <div class="fake-thumb" style="background:#a78bfa;">🚗</div>
-      <div class="tile-label">GTA Online</div>
-    </div>
-    <div class="game-tile wide" onclick="openGame('Highway Traffic','🚗','linear-gradient(135deg,#1e293b,#334155)')" data-genre="Racing">
-      <div class="fake-thumb" style="background:linear-gradient(135deg,#1e293b,#334155);">🚗&nbsp; Highway Traffic</div>
-      <div class="tile-label">Highway Traffic</div>
-    </div>
-    <div class="game-tile" onclick="openGame('Cookie Clicker','🍪','#fdba74')" data-genre="Idle">
-      <div class="fake-thumb" style="background:#fdba74;">🍪</div>
-      <div class="tile-label">Cookie Clicker</div>
-      <span class="badge badge-hot">HOT</span>
-    </div>
-    <div class="game-tile" onclick="openGame('Slither.io','🐍','#86efac')" data-genre="Multiplayer">
-      <div class="fake-thumb" style="background:#86efac;">🐍</div>
-      <div class="tile-label">Slither.io</div>
-    </div>
-    <div class="game-tile" onclick="openGame('Geometry Dash','🔮','#c4b5fd')" data-genre="Skill">
-      <div class="fake-thumb" style="background:#c4b5fd;">🔮</div>
-      <div class="tile-label">Geometry Dash</div>
-      <span class="badge badge-hot">HOT</span>
-    </div>
-    <div class="game-tile" onclick="openGame('FNAF','👻','#fca5a5')" data-genre="Horror">
-      <div class="fake-thumb" style="background:#fca5a5;">👻</div>
-      <div class="tile-label">FNAF</div>
-    </div>
-    <div class="game-tile" onclick="openGame('Minecraft','⛏️','#6ee7b7')" data-genre="Simulator">
-      <div class="fake-thumb" style="background:#6ee7b7;">⛏️</div>
-      <div class="tile-label">Minecraft</div>
-      <span class="badge badge-new">NEW</span>
-    </div>
-    <div class="game-tile" onclick="openGame('Run 3','🏃','#fcd34d')" data-genre="Action">
-      <div class="fake-thumb" style="background:#fcd34d;">🏃</div>
-      <div class="tile-label">Run 3</div>
-    </div>
-    <div class="game-tile big" onclick="openGame('Steal Brainrot Heist','🎳','linear-gradient(135deg,#f97316,#ea580c)')" data-genre="Action">
-      <div class="fake-thumb" style="background:linear-gradient(135deg,#f97316,#ea580c);">🎳</div>
-      <div class="tile-label">Steal Brainrot Heist</div>
-      <span class="badge badge-new">NEW</span>
-    </div>
-    <div class="game-tile" onclick="openGame('Brookhaven','🏖️','#bfdbfe')" data-genre="Simulator">
-      <div class="fake-thumb" style="background:#bfdbfe;">🏖️</div>
-      <div class="tile-label">Brookhaven</div>
-    </div>
-    <div class="game-tile" onclick="openGame('Head Soccer','⚽','#d1fae5')" data-genre="Sports">
-      <div class="fake-thumb" style="background:#d1fae5;">⚽</div>
-      <div class="tile-label">Head Soccer</div>
-    </div>
-    <div class="game-tile" onclick="openGame('Zombs.io','🧟','#fee2e2')" data-genre="Multiplayer">
-      <div class="fake-thumb" style="background:#fee2e2;">🧟</div>
-      <div class="tile-label">Zombs.io</div>
-    </div>
-    <div class="game-tile" onclick="openGame('Shell Shockers','🥚','#e0e7ff')" data-genre="Action">
-      <div class="fake-thumb" style="background:#e0e7ff;">🥚</div>
-      <div class="tile-label">Shell Shockers</div>
-      <span class="badge badge-hot">HOT</span>
-    </div>
-    <div class="game-tile" onclick="openGame('Smash Karts','💥','#fef9c3')" data-genre="Racing">
-      <div class="fake-thumb" style="background:#fef9c3;">💥</div>
-      <div class="tile-label">Smash Karts</div>
-    </div>
-    <div class="game-tile" onclick="openGame('Basketball Stars')"" data-genre="Sports">
-      <div class="fake-thumb" style="background:#ecfdf5;">🏀</div>
-      <div class="tile-label">Basketball Stars</div>
-    </div>
-    <div class="game-tile" onclick="openGame('Among Us','🔴','#fdf4ff')" data-genre="Multiplayer">
-      <div class="fake-thumb" style="background:#fdf4ff;">🔴</div>
-      <div class="tile-label">Among Us</div>
+    <div class="game-tile bigtall" onclick="openGame('Basketball Legends')" data-genre="Sports">
+      <img class="game-thumb" src="thumbs/basketball-stars.png" alt="Basketball Legends">
+      <div class="tile-label">Basketball Legends</div>
       <span class="badge badge-top">TOP</span>
     </div>
-    <div class="game-tile" onclick="openGame('Dragon Run','🐉','#fff1f2')" data-genre="Action">
-      <div class="fake-thumb" style="background:#fff1f2;">🐉</div>
-      <div class="tile-label">Dragon Run</div>
-      <span class="badge badge-new">NEW</span>
-    </div>
-    <div class="game-tile" onclick="openGame('Undertale','❤️','#f0fdf4')" data-genre="Retro">
-      <div class="fake-thumb" style="background:#f0fdf4;">❤️</div>
-      <div class="tile-label">Undertale</div>
-    </div>
-    <div class="game-tile" onclick="openGame('Football Bros','🏈','#fffbeb')" data-genre="Sports">
-      <div class="fake-thumb" style="background:#fffbeb;">🏈</div>
-      <div class="tile-label">Football Bros</div>
-    </div>
-    <div class="game-tile" onclick="openGame('Moto X3M','🏍️','#ecfdf5')" data-genre="Racing">
-      <div class="fake-thumb" style="background:#ecfdf5;">🏍️</div>
-      <div class="tile-label">Moto X3M</div>
+    <div class="game-tile bigwide" onclick="openGame('Squid Game')" data-genre="Action">
+      <img class="game-thumb" src="thumbs/squid-game.png" alt="Squid Game">
+      <div class="tile-label">Squid Game</div>
       <span class="badge badge-hot">HOT</span>
     </div>
-    <div class="game-tile" onclick="openGame('Goat Simulator','🐐','#fff7ed')" data-genre="Simulator">
-      <div class="fake-thumb" style="background:#fff7ed;">🐐</div>
-      <div class="tile-label">Goat Simulator</div>
+    <div class="game-tile bigwide" onclick="openGame('Temple Run 2')" data-genre="Skill">
+      <img class="game-thumb" src="thumbs/temple-run.png" alt="Temple Run 2">
+      <div class="tile-label">Temple Run 2</div>
+      <span class="badge badge-hot">HOT</span>
     </div>
-    <div class="game-tile" onclick="openGame('UltraKill','⚔️','#f0fdf4')" data-genre="Action">
-      <div class="fake-thumb" style="background:#f0fdf4;">⚔️</div>
-      <div class="tile-label">UltraKill</div>
+    <div class="game-tile big" onclick="openGame('Fireboy & Watergirl')" data-genre="Skill">
+      <img class="game-thumb" src="thumbs/fireboy.jpg" alt="Fireboy &amp; Watergirl">
+      <div class="tile-label">Fireboy & Watergirl</div>
+      <span class="badge badge-hot">HOT</span>
     </div>
-    <div class="game-tile" onclick="openGame('Drift Hunters','🏁','#f8fafc')" data-genre="Racing">
-      <div class="fake-thumb" style="background:#f8fafc;">🏁</div>
+    <div class="game-tile big" onclick="openGame('Drift Hunters')" data-genre="Racing">
+      <img class="game-thumb" src="thumbs/drift-hunters.svg" alt="Drift Hunters">
       <div class="tile-label">Drift Hunters</div>
-    </div>
-    <div class="game-tile" onclick="openGame('Pokémon Emerald','⚡','#fef3c7')" data-genre="Retro">
-      <div class="fake-thumb" style="background:#fef3c7;">⚡</div>
-      <div class="tile-label">Pokémon Emerald</div>
-    </div>
-    <div class="game-tile" onclick="openGame('Baseball Bros','⚾','#e0f2fe')" data-genre="Sports">
-      <div class="fake-thumb" style="background:#e0f2fe;">⚾</div>
-      <div class="tile-label">Baseball Bros</div>
-    </div>
-    <div class="game-tile" onclick="openGame('Life Simulator','👶','#fdf2f8')" data-genre="Simulator">
-      <div class="fake-thumb" style="background:#fdf2f8;">👶</div>
-      <div class="tile-label">Life Simulator</div>
       <span class="badge badge-new">NEW</span>
     </div>
-    <div class="game-tile" onclick="openGame('Papa\'s Pizzeria','🍕','#fef9c3')" data-genre="Simulator">
-      <div class="fake-thumb" style="background:#fef9c3;">🍕</div>
-      <div class="tile-label">Papa's Pizzeria</div>
+    <div class="game-tile tall" onclick="openGame('Stickman')" data-genre="Action">
+      <img class="game-thumb" src="thumbs/stickman.svg" alt="Stickman">
+      <div class="tile-label">Stickman</div>
     </div>
-    <div class="game-tile" onclick="openGame('CubeCraft','🧱','#d1fae5')" data-genre="Action">
-      <div class="fake-thumb" style="background:#d1fae5;">🧱</div>
-      <div class="tile-label">CubeCraft</div>
+    <div class="game-tile tall" onclick="openGame('1v1.lol')" data-genre="Action">
+      <img class="game-thumb" src="thumbs/1v1-lol.png" alt="1v1.lol">
+      <div class="tile-label">1v1.lol</div>
+      <span class="badge badge-hot">HOT</span>
+    </div>
+    <div class="game-tile tall" onclick="openGame('Snow Rider 3D')" data-genre="Skill">
+      <img class="game-thumb" src="thumbs/snow-rider.png" alt="Snow Rider 3D">
+      <div class="tile-label">Snow Rider 3D</div>
+      <span class="badge badge-new">NEW</span>
+    </div>
+    <div class="game-tile wide" onclick="openGame('Highway Traffic')" data-genre="Racing">
+      <img class="game-thumb" src="thumbs/highway-traffic.png" alt="Highway Traffic">
+      <div class="tile-label">Highway Traffic</div>
+      <span class="badge badge-new">NEW</span>
+    </div>
+    <div class="game-tile wide" onclick="openGame('Cluster Rush')" data-genre="Skill">
+      <img class="game-thumb" src="thumbs/cluster-rush.png" alt="Cluster Rush">
+      <div class="tile-label">Cluster Rush</div>
+    </div>
+    <div class="game-tile" onclick="openGame('Tunnel Rush')" data-genre="Skill">
+      <img class="game-thumb" src="thumbs/tunnel-rush.png" alt="Tunnel Rush">
+      <div class="tile-label">Tunnel Rush</div>
+    </div>
+    <div class="game-tile" onclick="openGame('Rooftop Snipers')" data-genre="Action">
+      <img class="game-thumb" src="thumbs/rooftop-snipers.jpeg" alt="Rooftop Snipers">
+      <div class="tile-label">Rooftop Snipers</div>
+    </div>
+    <div class="game-tile" onclick="openGame('Retro Bowl')" data-genre="Sports">
+      <img class="game-thumb" src="thumbs/football-bros.svg" alt="Retro Bowl">
+      <div class="tile-label">Retro Bowl</div>
+    </div>
+    <div class="game-tile" onclick="openGame('Paper.io 2')" data-genre="Action">
+      <img class="game-thumb" src="thumbs/paper-io.png" alt="Paper.io 2">
+      <div class="tile-label">Paper.io 2</div>
+    </div>
+    <div class="game-tile" onclick="openGame('Stickman Hook')" data-genre="Skill">
+      <img class="game-thumb" src="thumbs/stickman-hook.svg" alt="Stickman Hook">
+      <div class="tile-label">Stickman Hook</div>
+    </div>
+    <div class="game-tile" onclick="openGame('Wordle')" data-genre="Puzzle">
+      <img class="game-thumb" src="thumbs/wordle.png" alt="Wordle">
+      <div class="tile-label">Wordle</div>
+    </div>
+    <div class="game-tile" onclick="openGame('BitLife')" data-genre="Simulation">
+      <img class="game-thumb" src="thumbs/bitlife.svg" alt="BitLife">
+      <div class="tile-label">BitLife</div>
+    </div>
+    <div class="game-tile wide" onclick="openGame('Crossy Road')" data-genre="Skill">
+      <img class="game-thumb" src="thumbs/crossy-road.svg" alt="Crossy Road">
+      <div class="tile-label">Crossy Road</div>
+    </div>
+    <div class="game-tile tall" onclick="openGame('2048')" data-genre="Puzzle">
+      <img class="game-thumb" src="thumbs/2048.png" alt="2048">
+      <div class="tile-label">2048</div>
+    </div>
+    <div class="game-tile" onclick="openGame('Stack')" data-genre="Skill">
+      <img class="game-thumb" src="thumbs/stack.svg" alt="Stack">
+      <div class="tile-label">Stack</div>
+    </div>
+
+    <div class="game-tile" onclick="openGame('Flappy Bird')" data-genre="Skill">
+      <img class="game-thumb" src="thumbs/flappybird.svg" alt="Flappy Bird">
+      <div class="tile-label">Flappy Bird</div>
+      <span class="badge badge-new">NEW</span>
+    </div>
+
+    <div class="game-tile tall" onclick="openGame('Jetpack Joyride')" data-genre="Skill">
+      <img class="game-thumb" src="thumbs/jetpack-joyride.svg" alt="Jetpack Joyride">
+      <div class="tile-label">Jetpack Joyride</div>
+      <span class="badge badge-new">NEW</span>
+    </div>
+
+    <div class="game-tile wide" onclick="openGame('Fruit Ninja')" data-genre="Action">
+      <img class="game-thumb" src="thumbs/fruit-ninja.svg" alt="Fruit Ninja">
+      <div class="tile-label">Fruit Ninja</div>
+      <span class="badge badge-new">NEW</span>
+    </div>
+
+    <div class="game-tile" onclick="openGame('Dino Run')" data-genre="Skill">
+      <img class="game-thumb" src="thumbs/google-dino.svg" alt="Dino Run">
+      <div class="tile-label">Dino Run</div>
+      <span class="badge badge-new">NEW</span>
+    </div>
+
+    <div class="game-tile" onclick="openGame('Cut the Rope')" data-genre="Puzzle">
+      <img class="game-thumb" src="thumbs/cut-the-rope.svg" alt="Cut the Rope">
+      <div class="tile-label">Cut the Rope</div>
+      <span class="badge badge-new">NEW</span>
+    </div>
+
+    <div class="game-tile" onclick="openGame('Solitaire')" data-genre="Puzzle">
+      <img class="game-thumb" src="thumbs/solitaire.svg" alt="Solitaire">
+      <div class="tile-label">Solitaire</div>
+      <span class="badge badge-new">NEW</span>
+    </div>
+
+    <div class="game-tile tall" onclick="openGame('Sonic')" data-genre="Skill">
+      <img class="game-thumb" src="thumbs/sonic.svg" alt="Sonic">
+      <div class="tile-label">Sonic</div>
+      <span class="badge badge-new">NEW</span>
+    </div>
+
+    <div class="game-tile wide" onclick="openGame('Super Mario Bros')" data-genre="Skill">
+      <img class="game-thumb" src="thumbs/super-mario-bros.svg" alt="Super Mario Bros">
+      <div class="tile-label">Super Mario Bros</div>
+      <span class="badge badge-new">NEW</span>
+    </div>
+
+    <div class="game-tile" onclick="openGame('Bloons TD 5')" data-genre="Skill">
+      <img class="game-thumb" src="thumbs/bloons-td5.svg" alt="Bloons TD 5">
+      <div class="tile-label">Bloons TD 5</div>
+      <span class="badge badge-new">NEW</span>
+    </div>
+
+    <div class="game-tile" onclick="openGame('Impossible Quiz')" data-genre="Puzzle">
+      <img class="game-thumb" src="thumbs/impossible-quiz.svg" alt="Impossible Quiz">
+      <div class="tile-label">Impossible Quiz</div>
+      <span class="badge badge-new">NEW</span>
+    </div>
+
+    <div class="game-tile" onclick="openGame(&quot;World's Hardest Game&quot;)" data-genre="Skill">
+      <img class="game-thumb" src="thumbs/hardest-game.svg" alt="World's Hardest Game">
+      <div class="tile-label">World's Hardest Game</div>
+      <span class="badge badge-new">NEW</span>
+    </div>
+
+    <div class="game-tile" onclick="openGame('Bloxorz')" data-genre="Puzzle">
+      <img class="game-thumb" src="thumbs/bloxorz.svg" alt="Bloxorz">
+      <div class="tile-label">Bloxorz</div>
       <span class="badge badge-new">NEW</span>
     </div>
 
   </div>
 </div>
+
+<!-- BOTTOM BANNER AD -->
+<div class="bottom-ad-wrap">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-9208686180473353"
+       data-ad-slot="3324312731"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+<script>(window.adsbygoogle = window.adsbygoogle || []).push({});</script>
 
 <!-- FOOTER -->
 <footer>
@@ -384,6 +936,12 @@ footer a:hover{color:var(--accent);}
     <a href="#">Discord</a>
   </div>
 </footer>
+
+<!-- DOG MASCOT -->
+<div class="mascot hidden" id="mascot">
+  <img class="mascot-dog" id="mascotDog" src="favicon.svg" alt="Dogmath mascot" onclick="bounceMascot()">
+  <div class="mascot-bubble" id="mascotBubble" onclick="dismissMascot()"></div>
+</div>
 
 <!-- SEARCH OVERLAY -->
 <div class="search-overlay" id="searchOverlay" onclick="handleOverlayClick(event)">
@@ -428,54 +986,103 @@ footer a:hover{color:var(--accent);}
   </div>
 </div>
 
+<!-- PROFILE DRAWER -->
+<div class="profile-drawer" id="profileDrawer" onclick="if(event.target===this)closeProfile()">
+  <div class="profile-panel">
+    <div class="profile-header">
+      <h2>👤 My Profile</h2>
+      <button class="profile-close" onclick="closeProfile()">✕</button>
+    </div>
+    <div class="profile-greeting" id="profileGreeting"></div>
+    <div class="profile-section">
+      <div class="profile-section-title">My Favorites <span class="profile-stat-pill" id="profileFavCount">0</span></div>
+      <div id="profileFavorites"></div>
+    </div>
+    <div class="profile-section">
+      <div class="profile-section-title">Recently Played <span class="profile-stat-pill" id="profileRecentCount">0</span></div>
+      <div id="profileRecent"></div>
+    </div>
+    <div class="profile-section">
+      <div class="profile-section-title">Settings</div>
+      <div class="profile-settings-row">
+        <span>Theme</span>
+        <div class="theme-toggle">
+          <button id="themeBtnDark" onclick="setTheme('dark')">🌙 Dark</button>
+          <button id="themeBtnLight" onclick="setTheme('light')">☀️ Light</button>
+        </div>
+      </div>
+      <div class="profile-settings-row">
+        <span>Sound effects</span>
+        <div class="theme-toggle">
+          <button id="soundBtnOn" onclick="setSound(true)">🔊 On</button>
+          <button id="soundBtnOff" onclick="setSound(false)">🔇 Off</button>
+        </div>
+      </div>
+      <div class="profile-settings-row">
+        <span>Mascot tips</span>
+        <div class="theme-toggle">
+          <button id="mascotBtnOn" onclick="setMascot(true)">🐕 On</button>
+          <button id="mascotBtnOff" onclick="setMascot(false)">🚫 Off</button>
+        </div>
+      </div>
+      <div class="profile-settings-row" style="display:block;padding-top:14px;">
+        <button class="btn-danger" onclick="clearMyData()">🗑️ Clear my data (likes, history, name)</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- GAME MODAL -->
 <div class="game-modal" id="gameModal">
-  <div class="game-modal-inner">
+  <div class="game-modal-inner" id="gameModalInner">
     <div class="game-modal-bar">
       <div class="game-modal-title" id="modalTitle">▶ Now Playing</div>
-      <button class="game-modal-close" onclick="closeModal()">✕ Close</button>
+      <div class="game-modal-actions">
+        <button class="game-modal-btn like" id="modalLikeBtn">👍 <span class="modal-like-count" id="modalLikeCount">0</span></button>
+        <button class="game-modal-btn fs" id="fsBtn" onclick="toggleFullscreen()">⛶ Fullscreen</button>
+        <button class="game-modal-btn" onclick="closeModal()">✕ Close</button>
+      </div>
     </div>
+    <div class="game-ad-slot" id="gameAdSlot"></div>
     <div class="game-modal-body" id="gameContainer"></div>
   </div>
 </div>
 
 <script>
 const games = [
-  {name:'Slope',
-  emoji:'⛳',
-  path:'slope',
-  genre:'Skill'},
-  {name:'Drift King',emoji:'🏎️',bg:'#fbbf24',genre:'Racing'},
-  {name:'Squid Game',emoji:'🦑',bg:'#60a5fa',genre:'Action'},
-  {name:'Cookie Clicker',emoji:'🍪',bg:'#fdba74',genre:'Idle'},
-  {name:'Geometry Dash',emoji:'🔮',bg:'#c4b5fd',genre:'Skill'},
-  {name:'Slither.io',emoji:'🐍',bg:'#86efac',genre:'Multiplayer'},
-  {name:'Run 3',
-  emoji:'🏃',
-  path:'run3',
-  genre:'Action'},
-  {name:'Among Us',emoji:'🔴',bg:'#fdf4ff',genre:'Multiplayer'},
-  {name:'Shell Shockers',emoji:'🥚',bg:'#e0e7ff',genre:'Action'},
-  {name:'Moto X3M',emoji:'🏍️',bg:'#ecfdf5',genre:'Racing'},
-  {name:'FNAF',emoji:'👻',bg:'#fca5a5',genre:'Horror'},
-  {name:'Minecraft',emoji:'⛏️',bg:'#6ee7b7',genre:'Simulator'},
-  {name:'Head Soccer',emoji:'⚽',bg:'#d1fae5',genre:'Sports'},
-  {
-  name: 'Basketball Stars',
-  path: 'basketball-stars',
-  emoji: '🏀',
-  bg: '#ecfdf5',
-  genre: 'Sports',
-},
-  {name:'Undertale',emoji:'❤️',bg:'#f0fdf4',genre:'Retro'},
-  {name:'Pokémon Emerald',emoji:'⚡',bg:'#fef3c7',genre:'Retro'},
-  {
-  name: 'Highway Traffic',
-  emoji: '🚗',
-  bg: 'linear-gradient(135deg,#1e293b,#334155)',
-  genre: 'Racing',
-  iframe: `<iframe src="https://html5.gamedistribution.com/7c151f5e29eb40a591edfe1823e1d0ea/" width="100%" height="550" frameborder="0" allowfullscreen></iframe>`
-}
+  {name:'Slope',thumb:'slope.png', emoji:'⛳', path:'slope', genre:'Skill'},
+  {name:'Highway Traffic',thumb:'highway-traffic.png', emoji:'🚗', bg:'linear-gradient(135deg,#1e293b,#334155)', genre:'Racing', src:'https://html5.gamedistribution.com/7c151f5e29eb40a591edfe1823e1d0ea/'},
+  {name:'Squid Game',thumb:'squid-game.png', emoji:'🦑', bg:'#60a5fa', genre:'Action', path:'squid-game'},
+  {name:'Basketball Legends',thumb:'basketball-stars.png', emoji:'🏀', bg:'#ecfdf5', genre:'Sports', path:'basketball-stars'},
+  {name:'Retro Bowl',thumb:'football-bros.svg', emoji:'🏈', bg:'#fffbeb', genre:'Sports', path:'retro-bowl'},
+  {name:'Stickman',thumb:'stickman.svg', emoji:'🤺', bg:'#f87171', genre:'Action', path:'stickman'},
+  {name:'Fireboy & Watergirl',thumb:'fireboy.jpg', emoji:'🔥', bg:'linear-gradient(135deg,#f97316,#3b82f6)', genre:'Skill', path:'fireboy-watergirl'},
+  {name:'1v1.lol',thumb:'1v1-lol.png', emoji:'🎯', bg:'#1e293b', genre:'Action', path:'1v1-lol'},
+  {name:'Tunnel Rush',thumb:'tunnel-rush.png', emoji:'🌀', bg:'linear-gradient(135deg,#7c3aed,#db2777)', genre:'Skill', path:'tunnel-rush'},
+  {name:'Rooftop Snipers',thumb:'rooftop-snipers.jpeg', emoji:'🎯', bg:'#475569', genre:'Action', path:'rooftop-snipers'},
+  {name:'Drift Hunters',thumb:'drift-hunters.svg', emoji:'🏎️', bg:'#1a1a2e', genre:'Racing', src:'https://drifthunters.io/'},
+  {name:'Cluster Rush',thumb:'cluster-rush.png', emoji:'🚛', bg:'#fef3c7', genre:'Skill', src:'https://cluster-rush-games.github.io/'},
+  {name:'Snow Rider 3D',thumb:'snow-rider.png', emoji:'⛷️', bg:'#dbeafe', genre:'Skill', src:'https://snow-rider-3d.github.io/'},
+  {name:'Paper.io 2',thumb:'paper-io.png', emoji:'📄', bg:'#fff', genre:'Action', src:'https://hub-pro.github.io/games/paperio2/'},
+  {name:'Temple Run 2',thumb:'temple-run.png', emoji:'🏃', bg:'#78350f', genre:'Skill', src:'https://hub-pro.github.io/games/templerun2/'},
+  {name:'Stickman Hook',thumb:'stickman-hook.svg', emoji:'🪝', bg:'#7c3aed', genre:'Skill', src:'https://hub-pro.github.io/games/stickmanhook/'},
+  {name:'Wordle',thumb:'wordle.png', emoji:'🔤', bg:'#16a34a', genre:'Puzzle', src:'https://hub-pro.github.io/games/wordle/'},
+  {name:'BitLife',thumb:'bitlife.svg', emoji:'👶', bg:'#0a0a0a', genre:'Simulation', src:'https://hub-pro.github.io/games/bitlife/'},
+  {name:'Crossy Road',thumb:'crossy-road.svg', emoji:'🐔', bg:'#22c55e', genre:'Skill', src:'https://hub-pro.github.io/games/crossyroad/'},
+  {name:'2048',thumb:'2048.png', emoji:'🔢', bg:'#f9a825', genre:'Puzzle', src:'https://hub-pro.github.io/games/2048/'},
+  {name:'Stack',thumb:'stack.svg', emoji:'🧱', bg:'linear-gradient(135deg,#1e1b4b,#312e81)', genre:'Skill', src:'https://hub-pro.github.io/games/stack/'},
+  {name:'Flappy Bird',thumb:'flappybird.svg', emoji:'🐦', bg:'linear-gradient(135deg,#4fc3f7,#b3e5fc)', genre:'Skill', src:'https://hub-pro.github.io/games/flappybird/'},
+  {name:'Jetpack Joyride',thumb:'jetpack-joyride.svg', emoji:'🚀', bg:'linear-gradient(135deg,#0f0c29,#302b63)', genre:'Skill', src:'https://hub-pro.github.io/games/jetpackjoyride/'},
+  {name:'Fruit Ninja',thumb:'fruit-ninja.svg', emoji:'🍉', bg:'linear-gradient(135deg,#1a1a1a,#3d2817)', genre:'Action', src:'https://hub-pro.github.io/games/fruitninja/'},
+  {name:'Dino Run',thumb:'google-dino.svg', emoji:'🦖', bg:'#f5f5f5', genre:'Skill', src:'https://hub-pro.github.io/games/googledino/'},
+  {name:'Cut the Rope',thumb:'cut-the-rope.svg', emoji:'🍬', bg:'linear-gradient(135deg,#8d6e63,#5d4037)', genre:'Puzzle', src:'https://hub-pro.github.io/games/cuttherope/'},
+  {name:'Solitaire',thumb:'solitaire.svg', emoji:'🃏', bg:'#1b5e20', genre:'Puzzle', src:'https://hub-pro.github.io/games/solitaire/'},
+  {name:'Sonic',thumb:'sonic.svg', emoji:'💨', bg:'linear-gradient(135deg,#0277bd,#01579b)', genre:'Skill', src:'https://hub-pro.github.io/games/sonic/'},
+  {name:'Super Mario Bros',thumb:'super-mario-bros.svg', emoji:'🍄', bg:'#5c94fc', genre:'Skill', src:'https://hub-pro.github.io/games/supermariobros/'},
+  {name:'Bloons TD 5',thumb:'bloons-td5.svg', emoji:'🎈', bg:'linear-gradient(135deg,#81c784,#388e3c)', genre:'Skill', src:'https://hub-pro.github.io/games/bloonstd5/'},
+  {name:'Impossible Quiz',thumb:'impossible-quiz.svg', emoji:'❓', bg:'linear-gradient(135deg,#9c27b0,#311b92)', genre:'Puzzle', src:'https://hub-pro.github.io/games/impossiblequiz/'},
+  {name:"World's Hardest Game",thumb:'hardest-game.svg', emoji:'🟥', bg:'#fff', genre:'Skill', src:'https://hub-pro.github.io/games/hardestgame/'},
+  {name:'Bloxorz',thumb:'bloxorz.svg', emoji:'🧊', bg:'linear-gradient(135deg,#37474f,#263238)', genre:'Puzzle', src:'https://hub-pro.github.io/games/bloxorz/'},
 ];
 
 // Populate top games in popup
@@ -483,7 +1090,7 @@ const popupGamesEl = document.getElementById('popupGames');
 games.slice(0,8).forEach(g => {
   const card = document.createElement('div');
   card.className = 'popup-game-card';
-  card.innerHTML = `<div class="popup-thumb" style="background:${g.bg};">${g.emoji}</div><div class="popup-game-name">${g.name}</div>`;
+  card.innerHTML = `<div class="popup-thumb"><img src="thumbs/${g.thumb}" alt="${g.name}" onerror="this.parentElement.style.background='${g.bg}';this.style.display='none'"></div><div class="popup-game-name">${g.name}</div>`;
   card.onclick = () => { closeSearch(); openGame(g.name, g.emoji, g.bg); };
   popupGamesEl.appendChild(card);
 });
@@ -504,7 +1111,7 @@ searchInput.addEventListener('input', function() {
   results.innerHTML = filtered.length
     ? filtered.map(g => `
         <div class="result-item" onclick="closeSearch();openGame('${g.name}','${g.emoji}','${g.bg}')">
-          <div class="result-icon" style="background:${g.bg};">${g.emoji}</div>
+          <div class="result-icon"><img src="thumbs/${g.thumb}" alt="${g.name}" style="width:46px;height:46px;object-fit:cover;border-radius:10px;" onerror="this.parentElement.style.background='${g.bg}';this.style.display='none'"></div>
           <div>
             <div class="result-name">${g.name}</div>
             <div class="result-genre">${g.genre}</div>
@@ -522,7 +1129,6 @@ function filterGenre(btn, genre) {
   });
 }
 
-// Device pills
 function deviceClick(btn) {
   document.querySelectorAll('.device-row .pill').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
@@ -546,33 +1152,637 @@ function handleOverlayClick(e) {
 }
 
 // Game modal
+const ADSENSE_CLIENT = 'ca-pub-9208686180473353';
+const ADSENSE_GAME_SLOT = '1079316986';
+
 function openGame(name) {
   const modal = document.getElementById('gameModal');
   const container = document.getElementById('gameContainer');
+  const adSlot = document.getElementById('gameAdSlot');
+  document.getElementById('modalTitle').dataset.game = name;
 
   const game = games.find(g => g.name === name);
+  const url = game && game.src ? game.src : (game && game.path ? `games/${game.path}/index.html` : null);
 
-  if (game) {
-    container.innerHTML = `
-      <iframe src="games/${game.path}/index.html"
-      width="100%" height="550" frameborder="0" allowfullscreen></iframe>
-    `;
+  if (url) {
+    container.innerHTML = `<iframe src="${url}" frameborder="0" allow="autoplay; fullscreen; gamepad" allowfullscreen></iframe>`;
   } else {
     container.innerHTML = `<div>Game not found</div>`;
   }
 
+  // Insert a fresh AdSense unit each time so AdSense rebinds on every game open
+  adSlot.innerHTML = `
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="${ADSENSE_CLIENT}"
+         data-ad-slot="${ADSENSE_GAME_SLOT}"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>`;
+  try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
+
+  setModalLikeFor(name);
+  bumpPlay(name);
+  recordPlay(name);
+
   modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
 function closeModal() {
+  if (document.fullscreenElement) document.exitFullscreen();
   document.getElementById('gameModal').classList.remove('open');
+  document.getElementById('gameContainer').innerHTML = '';
+  document.getElementById('gameAdSlot').innerHTML = '';
   document.body.style.overflow = '';
 }
+function toggleFullscreen() {
+  const inner = document.getElementById('gameModalInner');
+  const fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+  if (fsEl) {
+    (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+  } else {
+    (inner.requestFullscreen || inner.webkitRequestFullscreen).call(inner);
+  }
+}
+function updateFsBtn() {
+  const fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+  const btn = document.getElementById('fsBtn');
+  if (btn) btn.innerHTML = fsEl ? '⛶ Exit Fullscreen' : '⛶ Fullscreen';
+}
+document.addEventListener('fullscreenchange', updateFsBtn);
+document.addEventListener('webkitfullscreenchange', updateFsBtn);
 document.getElementById('gameModal').addEventListener('click', function(e) {
   if (e.target === this) closeModal();
 });
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeSearch(); closeModal(); }
+  if (e.key === 'Escape') { closeSearch(); closeModal(); closeProfile(); }
 });
+
+// ─── Like buttons (Google Apps Script + Sheets) ───
+const LIKES_API = 'https://script.google.com/macros/s/AKfycbykg55Ge4pV_R6yeDx0numo8YOSLgGqVdH4Bqyc9ygIxMCg9ubLcE0xnCZbEcrtEdZ8/exec';
+const LIKES_KEY = 'dogmath_user_likes';
+const HISTORY_KEY = 'dogmath_history';
+const NICKNAME_KEY = 'dogmath_nickname';
+const THEME_KEY = 'dogmath_theme';
+const PLAY_COUNT_KEY = 'dogmath_play_count';
+const STREAK_KEY = 'dogmath_streak';
+const BEST_STREAK_KEY = 'dogmath_best_streak';
+const LAST_VISIT_KEY = 'dogmath_last_visit';
+const HISTORY_MAX = 12;
+const userLiked = JSON.parse(localStorage.getItem(LIKES_KEY) || '{}');
+let userHistory = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
+let likeCounts = {};
+let playCounts = {};
+
+// Apply persisted theme on load
+(function applySavedTheme() {
+  const saved = localStorage.getItem(THEME_KEY);
+  if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
+})();
+
+function recordPlay(name) {
+  userHistory = [name, ...userHistory.filter(n => n !== name)].slice(0, HISTORY_MAX);
+  localStorage.setItem(HISTORY_KEY, JSON.stringify(userHistory));
+  const total = (parseInt(localStorage.getItem(PLAY_COUNT_KEY) || '0') || 0) + 1;
+  localStorage.setItem(PLAY_COUNT_KEY, String(total));
+  updateStatsWidget();
+  playSound('click');
+  checkMilestones();
+}
+
+function fmtCount(n) {
+  if (n >= 1000000) return (n/1000000).toFixed(1).replace(/\.0$/,'') + 'M';
+  if (n >= 1000) return (n/1000).toFixed(1).replace(/\.0$/,'') + 'k';
+  return String(n);
+}
+
+function setupLikeButtons() {
+  document.querySelectorAll('.game-tile').forEach(tile => {
+    const m = (tile.getAttribute('onclick') || '').match(/openGame\('([^']+)'\)/);
+    if (!m) return;
+    const name = m[1];
+    const btn = document.createElement('button');
+    btn.className = 'like-btn' + (userLiked[name] ? ' liked' : '');
+    btn.dataset.game = name;
+    btn.innerHTML = '<span class="like-icon">👍</span><span class="like-count">·</span>';
+    btn.onclick = (e) => { e.stopPropagation(); likeGame(name); };
+    tile.appendChild(btn);
+  });
+}
+
+function updateLikeUI(name) {
+  const liked = !!userLiked[name];
+  const count = likeCounts[name] || 0;
+  document.querySelectorAll('.like-btn').forEach(btn => {
+    if (btn.dataset.game === name) {
+      btn.classList.toggle('liked', liked);
+      btn.querySelector('.like-count').textContent = count;
+    }
+  });
+  const modalBtn = document.getElementById('modalLikeBtn');
+  if (modalBtn && modalBtn.dataset.game === name) {
+    modalBtn.classList.toggle('liked', liked);
+    document.getElementById('modalLikeCount').textContent = count;
+  }
+}
+
+function setModalLikeFor(name) {
+  const modalBtn = document.getElementById('modalLikeBtn');
+  modalBtn.dataset.game = name;
+  modalBtn.classList.toggle('liked', !!userLiked[name]);
+  document.getElementById('modalLikeCount').textContent = likeCounts[name] || 0;
+  modalBtn.onclick = () => likeGame(name);
+}
+
+async function loadLikeCounts() {
+  if (!LIKES_API || LIKES_API.startsWith('PASTE_')) return;
+  try {
+    const [likesRes, playsRes] = await Promise.all([
+      fetch(LIKES_API + '?action=read'),
+      fetch(LIKES_API + '?action=plays')
+    ]);
+    likeCounts = await likesRes.json();
+    playCounts = await playsRes.json();
+    Object.keys(likeCounts).forEach(updateLikeUI);
+    document.querySelectorAll('.like-btn').forEach(btn => updateLikeUI(btn.dataset.game));
+    renderTopFaves();
+    renderTopPlayed();
+    renderNewGames();
+    refreshModalPlayCount();
+  } catch (e) { console.warn('Stats failed to load:', e); }
+}
+
+async function bumpPlay(name) {
+  playCounts[name] = (playCounts[name] || 0) + 1;
+  refreshModalPlayCount();
+  renderTopPlayed();
+  if (!LIKES_API || LIKES_API.startsWith('PASTE_')) return;
+  try {
+    const r = await fetch(LIKES_API + '?action=play&game=' + encodeURIComponent(name));
+    const data = await r.json();
+    if (typeof data.plays === 'number') {
+      playCounts[name] = data.plays;
+      refreshModalPlayCount();
+      renderTopPlayed();
+      renderTopFaves();
+    }
+  } catch (e) { console.warn('Play count failed:', e); }
+}
+
+function refreshModalPlayCount() {
+  const title = document.getElementById('modalTitle');
+  if (!title || !title.dataset.game) return;
+  const name = title.dataset.game;
+  title.innerHTML = '▶ ' + name + ' <span class="play-meta">· ' + fmtCount(playCounts[name] || 0) + ' plays</span>';
+}
+
+function renderRanked(sectionId, rowId, scoreMap) {
+  const section = document.getElementById(sectionId);
+  const row = document.getElementById(rowId);
+  const ranked = games
+    .map(g => ({...g, score: scoreMap[g.name] || 0}))
+    .filter(g => g.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3);
+  if (!ranked.length) {
+    section.classList.add('empty');
+    row.innerHTML = '';
+    return;
+  }
+  section.classList.remove('empty');
+  row.innerHTML = ranked.map((g, i) => `
+    <div class="fave-card rank-${i+1}" onclick="openGame('${g.name.replace(/'/g, "\\'")}')">
+      <img src="thumbs/${g.thumb}" alt="${g.name}" onerror="this.style.background='${g.bg||'#1a1a2e'}';this.style.objectFit='contain';">
+      <div class="fave-rank">${i+1}</div>
+      <div class="fave-info">
+        <div class="fave-name">${g.name}</div>
+        <div class="fave-stats">
+          <span class="fave-likes">👍 ${likeCounts[g.name] || 0}</span>
+          <span class="fave-plays">▶ ${fmtCount(playCounts[g.name] || 0)}</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderTopFaves()  { renderRanked('topFaves',  'topFavesRow',  likeCounts); }
+function renderTopPlayed() { renderRanked('topPlayed', 'topPlayedRow', playCounts); }
+
+function renderNewGames() {
+  const row = document.getElementById('newGamesRow');
+  const newest = games.slice(-3).reverse();
+  row.innerHTML = newest.map(g => `
+    <div class="fave-card" onclick="openGame('${g.name.replace(/'/g, "\\'")}')">
+      <img src="thumbs/${g.thumb}" alt="${g.name}" onerror="this.style.background='${g.bg||'#1a1a2e'}';this.style.objectFit='contain';">
+      <div class="fave-rank">NEW</div>
+      <div class="fave-info">
+        <div class="fave-name">${g.name}</div>
+        <div class="fave-stats">
+          <span class="fave-likes">👍 ${likeCounts[g.name] || 0}</span>
+          <span class="fave-plays">▶ ${fmtCount(playCounts[g.name] || 0)}</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+renderNewGames();
+
+// ─── Roulette ───
+function spinRoulette() {
+  const btn = document.getElementById('rouletteBtn');
+  const display = document.getElementById('rouletteDisplay');
+  const img = document.getElementById('rouletteImg');
+  const nameEl = document.getElementById('rouletteName');
+  if (btn.disabled) return;
+  btn.disabled = true;
+  btn.textContent = '🎲 Spinning...';
+  display.classList.add('spinning');
+  let ticks = 0;
+  const totalTicks = 18;
+  let delay = 60;
+  const tick = () => {
+    const g = games[Math.floor(Math.random() * games.length)];
+    img.src = `thumbs/${g.thumb}`;
+    nameEl.textContent = g.name;
+    playSound('spin');
+    ticks++;
+    if (ticks >= totalTicks) {
+      display.classList.remove('spinning');
+      btn.disabled = false;
+      btn.textContent = '🎲 SPIN!';
+      setTimeout(() => openGame(g.name), 500);
+      return;
+    }
+    if (ticks > totalTicks * 0.6) delay += 30;
+    setTimeout(tick, delay);
+  };
+  tick();
+}
+
+// ─── Streak + stats widget ───
+function todayStr() { return new Date().toISOString().slice(0, 10); }
+
+function updateStreak() {
+  const today = todayStr();
+  const last = localStorage.getItem(LAST_VISIT_KEY);
+  let streak = parseInt(localStorage.getItem(STREAK_KEY) || '0') || 0;
+  let best = parseInt(localStorage.getItem(BEST_STREAK_KEY) || '0') || 0;
+  if (last === today) {
+    // already counted today
+  } else {
+    const yest = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+    streak = (last === yest) ? streak + 1 : 1;
+    if (streak > best) best = streak;
+    localStorage.setItem(LAST_VISIT_KEY, today);
+    localStorage.setItem(STREAK_KEY, String(streak));
+    localStorage.setItem(BEST_STREAK_KEY, String(best));
+  }
+}
+
+function updateStatsWidget() {
+  const streak = parseInt(localStorage.getItem(STREAK_KEY) || '0') || 0;
+  const best = parseInt(localStorage.getItem(BEST_STREAK_KEY) || '0') || 0;
+  const plays = parseInt(localStorage.getItem(PLAY_COUNT_KEY) || '0') || 0;
+  const likes = Object.values(userLiked).filter(Boolean).length;
+  document.getElementById('streakNum').textContent = streak;
+  document.getElementById('bestStreakNum').textContent = best;
+  document.getElementById('totalPlaysNum').textContent = fmtCount(plays);
+  document.getElementById('totalLikesNum').textContent = likes;
+  const flame = document.getElementById('streakFlame');
+  flame.textContent = streak >= 7 ? '🔥🔥' : streak >= 3 ? '🔥' : streak >= 1 ? '✨' : '🐾';
+}
+
+updateStreak();
+updateStatsWidget();
+
+// ─── Sound effects (Web Audio API, no files) ───
+const SOUND_KEY = 'dogmath_sound';
+const MASCOT_KEY = 'dogmath_mascot';
+const CHALLENGE_DONE_KEY = 'dogmath_challenge_done'; // YYYY-MM-DD when last completed
+const MILESTONE_KEY = 'dogmath_milestones'; // JSON array of celebrated milestone ids
+
+let audioCtx = null;
+function getAudio() {
+  if (!audioCtx && typeof AudioContext !== 'undefined') audioCtx = new AudioContext();
+  return audioCtx;
+}
+function soundOn() { return localStorage.getItem(SOUND_KEY) !== 'off'; }
+function setSound(on) {
+  localStorage.setItem(SOUND_KEY, on ? 'on' : 'off');
+  renderSoundToggle();
+  if (on) playSound('click');
+}
+function renderSoundToggle() {
+  const on = soundOn();
+  document.getElementById('soundBtnOn').classList.toggle('active', on);
+  document.getElementById('soundBtnOff').classList.toggle('active', !on);
+}
+
+function playTone(freq, dur, type='sine', vol=0.15, when=0) {
+  if (!soundOn()) return;
+  const ctx = getAudio();
+  if (!ctx) return;
+  const o = ctx.createOscillator();
+  const g = ctx.createGain();
+  o.type = type;
+  o.frequency.value = freq;
+  g.gain.setValueAtTime(vol, ctx.currentTime + when);
+  g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + when + dur);
+  o.connect(g).connect(ctx.destination);
+  o.start(ctx.currentTime + when);
+  o.stop(ctx.currentTime + when + dur);
+}
+function playSound(kind) {
+  if (!soundOn()) return;
+  if (kind === 'click') playTone(420, 0.06, 'square', 0.08);
+  else if (kind === 'pop') { playTone(700, 0.08, 'sine', 0.18); playTone(1100, 0.07, 'sine', 0.12, 0.04); }
+  else if (kind === 'spin') playTone(800 + Math.random()*400, 0.04, 'square', 0.06);
+  else if (kind === 'fanfare') {
+    [523, 659, 784, 1047].forEach((f, i) => playTone(f, 0.15, 'triangle', 0.2, i*0.08));
+  }
+}
+
+// ─── Confetti milestones ───
+function getMilestones() {
+  try { return JSON.parse(localStorage.getItem(MILESTONE_KEY) || '[]'); } catch { return []; }
+}
+function celebrate(id, label) {
+  const done = getMilestones();
+  if (done.includes(id)) return;
+  done.push(id);
+  localStorage.setItem(MILESTONE_KEY, JSON.stringify(done));
+  if (typeof confetti === 'function') {
+    confetti({particleCount:120, spread:90, origin:{y:0.6}, colors:['#f59e0b','#ec4899','#a855f7','#22c55e','#06b6d4']});
+    setTimeout(() => confetti({particleCount:60, angle:60, spread:55, origin:{x:0,y:0.7}}), 200);
+    setTimeout(() => confetti({particleCount:60, angle:120, spread:55, origin:{x:1,y:0.7}}), 200);
+  }
+  playSound('fanfare');
+  if (label) showMascotTip(`🎉 ${label}!`, 6000);
+}
+function checkMilestones() {
+  const plays = parseInt(localStorage.getItem(PLAY_COUNT_KEY) || '0') || 0;
+  const likes = Object.values(userLiked).filter(Boolean).length;
+  const streak = parseInt(localStorage.getItem(STREAK_KEY) || '0') || 0;
+  if (plays === 1) celebrate('first-play', 'First game played');
+  if (plays === 10) celebrate('10-plays', '10 games played');
+  if (plays === 25) celebrate('25-plays', '25 games played');
+  if (plays === 50) celebrate('50-plays', '50 games played');
+  if (plays === 100) celebrate('100-plays', '100 games played');
+  if (likes === 1) celebrate('first-like', 'First favorite');
+  if (likes === 5) celebrate('5-likes', '5 favorites');
+  if (likes === 10) celebrate('10-likes', '10 favorites');
+  if (streak === 3) celebrate('streak-3', '3-day streak');
+  if (streak === 7) celebrate('streak-7', '7-day streak');
+  if (streak === 14) celebrate('streak-14', '14-day streak');
+  if (streak === 30) celebrate('streak-30', '30-day streak');
+}
+
+// ─── Daily Challenge ───
+function dayOfYear() {
+  const d = new Date();
+  const start = new Date(d.getFullYear(), 0, 0);
+  return Math.floor((d - start) / 86400000);
+}
+function todaysChallenge() {
+  const idx = dayOfYear() % games.length;
+  return games[idx];
+}
+function renderDailyChallenge() {
+  const g = todaysChallenge();
+  document.getElementById('dcThumb').src = `thumbs/${g.thumb}`;
+  document.getElementById('dcName').textContent = g.name;
+  const sub = document.getElementById('dcSub');
+  if (localStorage.getItem(CHALLENGE_DONE_KEY) === todayStr()) {
+    sub.innerHTML = `Play it to keep your streak alive! <span class="done-badge">✓ Done today</span>`;
+  } else {
+    sub.textContent = 'Play it to keep your streak alive!';
+  }
+}
+function playDailyChallenge() {
+  const g = todaysChallenge();
+  localStorage.setItem(CHALLENGE_DONE_KEY, todayStr());
+  renderDailyChallenge();
+  openGame(g.name);
+}
+renderDailyChallenge();
+
+// ─── Mascot ───
+const MASCOT_TIPS = [
+  "🎰 Try the Roulette for a surprise game!",
+  "⛶ Press the Fullscreen button for the best view.",
+  "👍 Tap the heart on a game to save it.",
+  "🔥 Visit daily to grow your streak!",
+  "🎯 Don't miss today's challenge above!",
+  "✨ Check out the newest games in 'Just Added'.",
+  "🐕 Woof! New games arrive every day.",
+  "🏆 Vote for your favorites — top 3 shows up on the homepage.",
+  "🎮 Use the search bar to find a game fast.",
+  "👤 Set a nickname in your profile!",
+];
+let mascotShown = false;
+let mascotTimer = null;
+function mascotOn() { return localStorage.getItem(MASCOT_KEY) !== 'off'; }
+function setMascot(on) {
+  localStorage.setItem(MASCOT_KEY, on ? 'on' : 'off');
+  renderMascotToggle();
+  const m = document.getElementById('mascot');
+  if (on) { m.classList.remove('hidden'); scheduleMascot(8000); playSound('click'); }
+  else { m.classList.add('hidden'); clearTimeout(mascotTimer); }
+}
+function renderMascotToggle() {
+  const on = mascotOn();
+  document.getElementById('mascotBtnOn').classList.toggle('active', on);
+  document.getElementById('mascotBtnOff').classList.toggle('active', !on);
+}
+function showMascotTip(text, duration=7000) {
+  if (!mascotOn()) return;
+  const m = document.getElementById('mascot');
+  const bubble = document.getElementById('mascotBubble');
+  m.classList.remove('hidden');
+  bubble.textContent = text;
+  requestAnimationFrame(() => bubble.classList.add('show'));
+  document.getElementById('mascotDog').classList.add('bounce');
+  setTimeout(() => document.getElementById('mascotDog').classList.remove('bounce'), 600);
+  clearTimeout(mascotTimer);
+  mascotTimer = setTimeout(() => {
+    bubble.classList.remove('show');
+    scheduleMascot(20000);
+  }, duration);
+}
+function scheduleMascot(ms) {
+  clearTimeout(mascotTimer);
+  mascotTimer = setTimeout(() => {
+    const tip = MASCOT_TIPS[Math.floor(Math.random() * MASCOT_TIPS.length)];
+    showMascotTip(tip);
+  }, ms);
+}
+function dismissMascot() {
+  document.getElementById('mascotBubble').classList.remove('show');
+  scheduleMascot(30000);
+}
+function bounceMascot() {
+  const dog = document.getElementById('mascotDog');
+  dog.classList.add('bounce');
+  setTimeout(() => dog.classList.remove('bounce'), 600);
+  playSound('pop');
+  const tip = MASCOT_TIPS[Math.floor(Math.random() * MASCOT_TIPS.length)];
+  showMascotTip(tip);
+}
+if (mascotOn()) {
+  document.getElementById('mascot').classList.remove('hidden');
+  scheduleMascot(8000);
+}
+renderSoundToggle();
+renderMascotToggle();
+checkMilestones();
+
+async function likeGame(name) {
+  if (userLiked[name]) return;
+  userLiked[name] = true;
+  localStorage.setItem(LIKES_KEY, JSON.stringify(userLiked));
+  likeCounts[name] = (likeCounts[name] || 0) + 1;
+  updateLikeUI(name);
+  renderTopFaves();
+  updateStatsWidget();
+  playSound('pop');
+  checkMilestones();
+  if (!LIKES_API || LIKES_API.startsWith('PASTE_')) return;
+  try {
+    const r = await fetch(LIKES_API + '?action=like&game=' + encodeURIComponent(name));
+    const data = await r.json();
+    if (typeof data.likes === 'number') {
+      likeCounts[name] = data.likes;
+      updateLikeUI(name);
+      renderTopFaves();
+    }
+  } catch (e) { console.warn('Like failed:', e); }
+}
+
+function openProfile() {
+  renderProfile();
+  document.getElementById('profileDrawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProfile() {
+  document.getElementById('profileDrawer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function renderProfile() {
+  renderGreeting();
+  renderThemeToggle();
+  const liked = Object.keys(userLiked).filter(k => userLiked[k]);
+  document.getElementById('profileFavCount').textContent = liked.length;
+  document.getElementById('profileFavorites').innerHTML = liked.length
+    ? renderProfileCards(liked)
+    : '<div class="profile-empty">No favorites yet — tap 👍 on any game to save it here.</div>';
+
+  document.getElementById('profileRecentCount').textContent = userHistory.length;
+  document.getElementById('profileRecent').innerHTML = userHistory.length
+    ? renderProfileCards(userHistory)
+    : '<div class="profile-empty">No plays yet — pick a game to start your history.</div>';
+}
+
+function renderGreeting() {
+  const greeting = document.getElementById('profileGreeting');
+  const name = (localStorage.getItem(NICKNAME_KEY) || '').trim();
+  if (name) {
+    greeting.innerHTML = `
+      <div class="greet-text">👋 Hi, <span class="nickname">${escapeHtml(name)}</span></div>
+      <button onclick="editNickname()">✎ Edit</button>
+    `;
+  } else {
+    greeting.innerHTML = `
+      <div class="greet-text">👤 Welcome, player</div>
+      <button onclick="editNickname()">+ Set name</button>
+    `;
+  }
+}
+
+function escapeHtml(s) {
+  return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function editNickname() {
+  const greeting = document.getElementById('profileGreeting');
+  const current = localStorage.getItem(NICKNAME_KEY) || '';
+  greeting.innerHTML = `
+    <div class="nickname-edit-row">
+      <input id="nicknameInput" maxlength="20" placeholder="Enter a nickname" value="${escapeHtml(current)}">
+      <button class="save" onclick="saveNickname()">Save</button>
+      <button onclick="renderGreeting()">Cancel</button>
+    </div>
+  `;
+  const input = document.getElementById('nicknameInput');
+  input.focus();
+  input.select();
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') saveNickname();
+    if (e.key === 'Escape') renderGreeting();
+  });
+}
+
+function saveNickname() {
+  const val = document.getElementById('nicknameInput').value.trim().slice(0, 20);
+  if (val) localStorage.setItem(NICKNAME_KEY, val);
+  else localStorage.removeItem(NICKNAME_KEY);
+  renderGreeting();
+}
+
+function setTheme(mode) {
+  if (mode === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem(THEME_KEY, 'light');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem(THEME_KEY, 'dark');
+  }
+  renderThemeToggle();
+}
+
+function renderThemeToggle() {
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  document.getElementById('themeBtnDark').classList.toggle('active', !isLight);
+  document.getElementById('themeBtnLight').classList.toggle('active', isLight);
+}
+
+function clearMyData() {
+  if (!confirm('Clear all your local data? This removes your likes, recently played history, nickname, and theme.')) return;
+  localStorage.removeItem(LIKES_KEY);
+  localStorage.removeItem(HISTORY_KEY);
+  localStorage.removeItem(NICKNAME_KEY);
+  localStorage.removeItem(THEME_KEY);
+  localStorage.removeItem(PLAY_COUNT_KEY);
+  localStorage.removeItem(STREAK_KEY);
+  localStorage.removeItem(BEST_STREAK_KEY);
+  localStorage.removeItem(LAST_VISIT_KEY);
+  Object.keys(userLiked).forEach(k => delete userLiked[k]);
+  userHistory = [];
+  document.documentElement.removeAttribute('data-theme');
+  document.querySelectorAll('.like-btn').forEach(btn => {
+    btn.classList.remove('liked');
+  });
+  updateStatsWidget();
+  renderProfile();
+}
+
+function renderProfileCards(names) {
+  return '<div class="profile-cards">' + names.map(name => {
+    const g = games.find(gg => gg.name === name);
+    if (!g) return '';
+    const safe = name.replace(/'/g, "\\'");
+    return `
+      <div class="profile-card" onclick="closeProfile();openGame('${safe}')">
+        <img src="thumbs/${g.thumb}" alt="${name}" onerror="this.style.background='${g.bg||'#1a1a2e'}';this.style.objectFit='contain';">
+        <div class="profile-card-label">${name}</div>
+      </div>
+    `;
+  }).join('') + '</div>';
+}
+
+setupLikeButtons();
+loadLikeCounts();
 </script>
+
 </body>
 </html>
