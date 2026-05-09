@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <radialGradient id="hsc-explosion" cx="0.7" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fff59d"/>
+      <stop offset="0.3" stop-color="#ff9800"/>
+      <stop offset="0.7" stop-color="#e53935"/>
+      <stop offset="1" stop-color="#3e2723"/>
+    </radialGradient>
+  </defs>
+  <rect width="200" height="200" fill="#212121"/>
+  <!-- Explosion -->
+  <circle cx="155" cy="100" r="55" fill="url(#hsc-explosion)"/>
+  <!-- Explosion debris -->
+  <polygon points="195,80 200,75 198,85" fill="#fdd835"/>
+  <polygon points="190,140 200,148 195,150" fill="#ff5722"/>
+  <polygon points="180,30 188,28 184,38" fill="#ff9800"/>
+  <!-- Floor -->
+  <rect x="0" y="160" width="200" height="40" fill="#37474f"/>
+  <!-- Stick figure (running, leaning forward) -->
+  <g transform="translate(50 130)">
+    <circle cx="0" cy="-30" r="10" fill="#fff8e1" stroke="#212121" stroke-width="2"/>
+    <line x1="-3" y1="-22" x2="-12" y2="0" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+    <line x1="-12" y1="0" x2="-22" y2="20" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+    <line x1="-12" y1="0" x2="-2" y2="20" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+    <!-- Arms swinging -->
+    <line x1="-6" y1="-15" x2="-22" y2="-25" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+    <line x1="-6" y1="-15" x2="8" y2="-5" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <!-- Speed lines -->
+  <g stroke="#fdd835" stroke-width="2" opacity="0.7">
+    <line x1="60" y1="100" x2="80" y2="100"/>
+    <line x1="60" y1="115" x2="78" y2="115"/>
+    <line x1="65" y1="130" x2="80" y2="130"/>
+  </g>
+  <!-- Title -->
+  <text x="100" y="180" text-anchor="middle" fill="#fdd835" font-family="Arial Black" font-size="11" font-weight="900">HENRY STICKMIN</text>
+  <text x="100" y="195" text-anchor="middle" fill="#fff" font-family="Arial Black" font-size="11" font-weight="900">FLEEING THE COMPLEX</text>
+</svg>

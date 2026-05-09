@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="sth-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#37474f"/>
+      <stop offset="1" stop-color="#78909c"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#sth-sky)"/>
+  <!-- Lightning -->
+  <polygon points="40,10 35,40 45,40 38,80" fill="#fdd835" opacity="0.8"/>
+  <polygon points="160,10 155,30 165,30 158,60" fill="#fdd835" opacity="0.7"/>
+  <!-- Ground -->
+  <rect x="0" y="155" width="200" height="45" fill="#3e2723"/>
+  <!-- House (fortified) -->
+  <polygon points="60,90 100,55 140,90 140,160 60,160" fill="#a1887f" stroke="#3e2723" stroke-width="2"/>
+  <rect x="80" y="115" width="40" height="45" fill="#5d4037" stroke="#3e2723" stroke-width="2"/>
+  <rect x="92" y="125" width="16" height="20" fill="#212121"/>
+  <!-- Windows -->
+  <rect x="68" y="100" width="14" height="14" fill="#fdd835"/>
+  <rect x="118" y="100" width="14" height="14" fill="#fdd835"/>
+  <!-- Shield emblem on house -->
+  <polygon points="100,120 92,128 92,140 100,148 108,140 108,128" fill="#1976d2" stroke="#fff" stroke-width="1.5"/>
+  <text x="100" y="142" text-anchor="middle" fill="#fff" font-family="Arial Black" font-size="14" font-weight="900">+</text>
+  <!-- Crosshair -->
+  <g stroke="#e53935" stroke-width="2" fill="none">
+    <circle cx="40" cy="120" r="10"/>
+    <line x1="40" y1="105" x2="40" y2="115"/>
+    <line x1="40" y1="125" x2="40" y2="135"/>
+    <line x1="25" y1="120" x2="35" y2="120"/>
+    <line x1="45" y1="120" x2="55" y2="120"/>
+  </g>
+  <!-- Title -->
+  <text x="100" y="190" text-anchor="middle" fill="#fff" font-family="Arial Black" font-size="13" font-weight="900" stroke="#000" stroke-width="0.5">STORM THE HOUSE</text>
+</svg>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="pb-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffb74d"/>
+      <stop offset="1" stop-color="#ff8a65"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#pb-bg)"/>
+  <!-- Plate -->
+  <ellipse cx="100" cy="155" rx="80" ry="14" fill="#fff" stroke="#bdbdbd" stroke-width="2"/>
+  <ellipse cx="100" cy="153" rx="70" ry="10" fill="#fafafa"/>
+  <!-- Burger stack -->
+  <!-- Bottom bun -->
+  <ellipse cx="100" cy="140" rx="55" ry="12" fill="#ffb74d" stroke="#e65100" stroke-width="1.5"/>
+  <!-- Lettuce -->
+  <path d="M 50 130 Q 60 122 70 132 Q 80 124 90 132 Q 100 122 110 132 Q 120 124 130 132 Q 140 124 150 132 L 150 138 L 50 138 Z" fill="#66bb6a" stroke="#1b5e20" stroke-width="1"/>
+  <!-- Tomato -->
+  <ellipse cx="100" cy="120" rx="50" ry="6" fill="#ef5350" stroke="#b71c1c" stroke-width="1"/>
+  <!-- Cheese -->
+  <polygon points="48,108 52,116 152,116 148,108" fill="#fdd835" stroke="#f57f17" stroke-width="1"/>
+  <!-- Patty -->
+  <ellipse cx="100" cy="100" rx="50" ry="10" fill="#5d4037" stroke="#3e2723" stroke-width="1.5"/>
+  <ellipse cx="100" cy="100" rx="48" ry="8" fill="#6d4c41"/>
+  <!-- Top bun -->
+  <ellipse cx="100" cy="80" rx="50" ry="20" fill="#ffb74d" stroke="#e65100" stroke-width="1.5"/>
+  <!-- Sesame seeds -->
+  <ellipse cx="80" cy="72" rx="2.5" ry="1.5" fill="#fff8e1"/>
+  <ellipse cx="100" cy="68" rx="2.5" ry="1.5" fill="#fff8e1"/>
+  <ellipse cx="115" cy="74" rx="2.5" ry="1.5" fill="#fff8e1"/>
+  <ellipse cx="90" cy="78" rx="2.5" ry="1.5" fill="#fff8e1"/>
+  <ellipse cx="120" cy="80" rx="2.5" ry="1.5" fill="#fff8e1"/>
+  <!-- Title -->
+  <text x="100" y="190" text-anchor="middle" fill="#fff" font-family="Arial Black" font-size="14" font-weight="900" stroke="#bf360c" stroke-width="0.8">PAPA'S BURGERIA</text>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="dl-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#81d4fa"/>
+      <stop offset="0.6" stop-color="#aed581"/>
+      <stop offset="1" stop-color="#81c784"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#dl-bg)"/>
+  <!-- Sun -->
+  <circle cx="170" cy="35" r="14" fill="#fff59d"/>
+  <!-- Track -->
+  <rect x="0" y="160" width="200" height="40" fill="#a1887f"/>
+  <line x1="0" y1="170" x2="200" y2="170" stroke="#fff" stroke-width="2" stroke-dasharray="8 6"/>
+  <!-- Duck (running) -->
+  <g transform="translate(80 130)">
+    <!-- Body -->
+    <ellipse cx="0" cy="0" rx="28" ry="22" fill="#fdd835"/>
+    <!-- Head -->
+    <circle cx="22" cy="-15" r="14" fill="#fdd835"/>
+    <!-- Eye -->
+    <circle cx="26" cy="-18" r="3" fill="#fff"/>
+    <circle cx="27" cy="-18" r="1.5" fill="#1a1a1a"/>
+    <!-- Beak -->
+    <polygon points="32,-13 44,-16 44,-10 32,-7" fill="#ff9800" stroke="#e65100" stroke-width="1"/>
+    <!-- Running shoes -->
+    <ellipse cx="-8" cy="20" rx="8" ry="4" fill="#e53935" stroke="#212121" stroke-width="1.5"/>
+    <ellipse cx="10" cy="20" rx="8" ry="4" fill="#e53935" stroke="#212121" stroke-width="1.5"/>
+    <line x1="-12" y1="18" x2="-4" y2="18" stroke="#fff" stroke-width="1"/>
+    <line x1="6" y1="18" x2="14" y2="18" stroke="#fff" stroke-width="1"/>
+    <!-- Sweat drop -->
+    <circle cx="40" cy="-25" r="3" fill="#42a5f5" opacity="0.8"/>
+  </g>
+  <!-- Speed lines -->
+  <g stroke="#fff" stroke-width="2" opacity="0.6">
+    <line x1="20" y1="120" x2="40" y2="120"/>
+    <line x1="20" y1="135" x2="35" y2="135"/>
+  </g>
+  <!-- Title -->
+  <text x="100" y="190" text-anchor="middle" fill="#fff" font-family="Arial Black" font-size="22" font-weight="900" stroke="#1b5e20" stroke-width="1">DUCK LIFE</text>
+</svg>

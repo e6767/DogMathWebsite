@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="du-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff6f00"/>
+      <stop offset="0.5" stop-color="#ff9800"/>
+      <stop offset="1" stop-color="#ffd54f"/>
+    </linearGradient>
+    <linearGradient id="du-sand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffb74d"/>
+      <stop offset="1" stop-color="#e65100"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#du-sky)"/>
+  <!-- Sun -->
+  <circle cx="100" cy="80" r="32" fill="#ffeb3b" opacity="0.7"/>
+  <circle cx="100" cy="80" r="22" fill="#fff59d"/>
+  <!-- Dunes (layered) -->
+  <path d="M 0 130 Q 50 100 100 120 Q 150 140 200 110 L 200 200 L 0 200 Z" fill="url(#du-sand)"/>
+  <path d="M 0 160 Q 60 130 120 150 Q 170 165 200 145 L 200 200 L 0 200 Z" fill="#bf360c" opacity="0.7"/>
+  <!-- Sandworm -->
+  <g transform="translate(50 130)">
+    <ellipse cx="0" cy="0" rx="22" ry="20" fill="#5d4037" stroke="#3e2723" stroke-width="2"/>
+    <!-- Mouth segments -->
+    <circle cx="0" cy="0" r="14" fill="#1a1a1a"/>
+    <polygon points="-12,-4 -10,4 -6,-2 -2,4 2,-2 6,4 10,-2 12,4" fill="#fff" stroke="#fff" stroke-width="0.5"/>
+  </g>
+  <!-- Title -->
+  <text x="100" y="190" text-anchor="middle" fill="#fff" font-family="Arial Black" font-size="32" font-weight="900" stroke="#bf360c" stroke-width="1.5">DUNE</text>
+</svg>
