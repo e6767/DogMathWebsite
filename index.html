@@ -1006,92 +1006,6 @@ footer a:hover{color:var(--accent);}
       <div class="tile-label">Super Mario 63</div>
       <span class="badge badge-new">NEW</span>
     </div>
-
-    <div class="game-tile" onclick="openGame('Trans Cube')" data-genre="Puzzle">
-      <img class="game-thumb" src="thumbs/trans-cube.svg" alt="Trans Cube">
-      <div class="tile-label">Trans Cube</div>
-      <span class="badge badge-new">NEW</span>
-    </div>
-
-    <div class="game-tile" onclick="openGame('Duck Life')" data-genre="Skill">
-      <img class="game-thumb" src="thumbs/duck-life.svg" alt="Duck Life">
-      <div class="tile-label">Duck Life</div>
-      <span class="badge badge-new">NEW</span>
-    </div>
-
-    <div class="game-tile" onclick="openGame(&quot;Papa's Burgeria&quot;)" data-genre="Simulation">
-      <img class="game-thumb" src="thumbs/papas-burgeria.svg" alt="Papa's Burgeria">
-      <div class="tile-label">Papa's Burgeria</div>
-      <span class="badge badge-new">NEW</span>
-    </div>
-
-    <div class="game-tile" onclick="openGame(&quot;Papa's Freezeria&quot;)" data-genre="Simulation">
-      <img class="game-thumb" src="thumbs/papas-freezeria.svg" alt="Papa's Freezeria">
-      <div class="tile-label">Papa's Freezeria</div>
-      <span class="badge badge-new">NEW</span>
-    </div>
-
-    <div class="game-tile" onclick="openGame(&quot;Papa's Pizzeria&quot;)" data-genre="Simulation">
-      <img class="game-thumb" src="thumbs/papas-pizzeria.svg" alt="Papa's Pizzeria">
-      <div class="tile-label">Papa's Pizzeria</div>
-      <span class="badge badge-new">NEW</span>
-    </div>
-
-    <div class="game-tile" onclick="openGame('Henry: Breaking the Bank')" data-genre="Puzzle">
-      <img class="game-thumb" src="thumbs/henry-stickmin-bank.svg" alt="Henry: Breaking the Bank">
-      <div class="tile-label">Henry: Breaking the Bank</div>
-      <span class="badge badge-new">NEW</span>
-    </div>
-
-    <div class="game-tile" onclick="openGame('Henry: Escaping the Prison')" data-genre="Puzzle">
-      <img class="game-thumb" src="thumbs/henry-stickmin-prison.svg" alt="Henry: Escaping the Prison">
-      <div class="tile-label">Henry: Escaping the Prison</div>
-      <span class="badge badge-new">NEW</span>
-    </div>
-
-    <div class="game-tile wide" onclick="openGame('Henry: Fleeing the Complex')" data-genre="Puzzle">
-      <img class="game-thumb" src="thumbs/henry-stickmin-complex.svg" alt="Henry: Fleeing the Complex">
-      <div class="tile-label">Henry: Fleeing the Complex</div>
-      <span class="badge badge-new">NEW</span>
-    </div>
-
-    <div class="game-tile" onclick="openGame('Riddle School 1')" data-genre="Puzzle">
-      <img class="game-thumb" src="thumbs/riddle-school-1.svg" alt="Riddle School 1">
-      <div class="tile-label">Riddle School 1</div>
-      <span class="badge badge-new">NEW</span>
-    </div>
-
-    <div class="game-tile" onclick="openGame('Riddle School 2')" data-genre="Puzzle">
-      <img class="game-thumb" src="thumbs/riddle-school-2.svg" alt="Riddle School 2">
-      <div class="tile-label">Riddle School 2</div>
-      <span class="badge badge-new">NEW</span>
-    </div>
-
-    <div class="game-tile" onclick="openGame('Riddle School 3')" data-genre="Puzzle">
-      <img class="game-thumb" src="thumbs/riddle-school-3.svg" alt="Riddle School 3">
-      <div class="tile-label">Riddle School 3</div>
-      <span class="badge badge-new">NEW</span>
-    </div>
-
-    <div class="game-tile tall" onclick="openGame('Riddle Transfer')" data-genre="Puzzle">
-      <img class="game-thumb" src="thumbs/riddle-transfer.svg" alt="Riddle Transfer">
-      <div class="tile-label">Riddle Transfer</div>
-      <span class="badge badge-new">NEW</span>
-    </div>
-
-    <div class="game-tile" onclick="openGame('Learn to Fly 2')" data-genre="Skill">
-      <img class="game-thumb" src="thumbs/learn-to-fly-2.svg" alt="Learn to Fly 2">
-      <div class="tile-label">Learn to Fly 2</div>
-      <span class="badge badge-new">NEW</span>
-    </div>
-
-    <div class="game-tile tall" onclick="openGame('Learn to Fly 3')" data-genre="Skill">
-      <img class="game-thumb" src="thumbs/learn-to-fly-3.svg" alt="Learn to Fly 3">
-      <div class="tile-label">Learn to Fly 3</div>
-      <span class="badge badge-new">NEW</span>
-    </div>
-
-  </div>
 </div>
 
 <!-- BOTTOM BANNER AD -->
@@ -1247,7 +1161,7 @@ const games = [
   {name:'Temple Run 2',thumb:'temple-run.png', emoji:'🏃', bg:'#78350f', genre:'Skill', path:'temple-run-2'},
   {name:'Stickman Hook',thumb:'stickman-hook.svg', emoji:'🪝', bg:'#7c3aed', genre:'Skill', path:'stickman-hook'},
   {name:'Wordle',thumb:'wordle.png', emoji:'🔤', bg:'#16a34a', genre:'Puzzle', path:'wordle'},
-  {name:'BitLife',thumb:'bitlife.svg', emoji:'👶', bg:'#0a0a0a', genre:'Simulation', path:'bitlife'},
+  {name:'BitLife',thumb:'bitlife.svg', emoji:'👶', bg:'#0a0a0a', genre:'Simulation', src:'https://hub-pro.github.io/games/bitlife/'},
   {name:'Crossy Road',thumb:'crossy-road.svg', emoji:'🐔', bg:'#22c55e', genre:'Skill', path:'crossy-road'},
   {name:'2048',thumb:'2048.png', emoji:'🔢', bg:'#f9a825', genre:'Puzzle', path:'2048'},
   {name:'Stack',thumb:'stack.svg', emoji:'🧱', bg:'linear-gradient(135deg,#1e1b4b,#312e81)', genre:'Skill', path:'stack'},
@@ -1258,29 +1172,28 @@ const games = [
   {name:'Cut the Rope',thumb:'cut-the-rope.svg', emoji:'🍬', bg:'linear-gradient(135deg,#8d6e63,#5d4037)', genre:'Puzzle', path:'cut-the-rope'},
   {name:'Solitaire',thumb:'solitaire.svg', emoji:'🃏', bg:'#1b5e20', genre:'Puzzle', path:'solitaire'},
   {name:'Sonic',thumb:'sonic.svg', emoji:'💨', bg:'linear-gradient(135deg,#0277bd,#01579b)', genre:'Skill', path:'sonic'},
-  {name:'Super Mario Bros',thumb:'super-mario-bros.svg', emoji:'🍄', bg:'#5c94fc', genre:'Skill', path:'super-mario-bros'},
+  {name:'Super Mario Bros',thumb:'super-mario-bros.svg', emoji:'🍄', bg:'#5c94fc', genre:'Skill', src:'https://hub-pro.github.io/games/supermariobros/'},
   {name:'Bloons TD 5',thumb:'bloons-td5.svg', emoji:'🎈', bg:'linear-gradient(135deg,#81c784,#388e3c)', genre:'Skill', path:'bloons-td5'},
   {name:'Impossible Quiz',thumb:'impossible-quiz.svg', emoji:'❓', bg:'linear-gradient(135deg,#9c27b0,#311b92)', genre:'Puzzle', path:'impossible-quiz'},
   {name:"World's Hardest Game",thumb:'hardest-game.svg', emoji:'🟥', bg:'#fff', genre:'Skill', path:'hardest-game'},
   {name:'Bloxorz',thumb:'bloxorz.svg', emoji:'🧊', bg:'linear-gradient(135deg,#37474f,#263238)', genre:'Puzzle', path:'bloxorz'},
-  {name:'Animal Crossing',thumb:'animal-crossing.svg', emoji:'🍃', bg:'linear-gradient(135deg,#80deea,#a5d6a7)', genre:'Simulation', path:'animal-crossing'},
-  {name:'Papery Planes',thumb:'papery-planes.svg', emoji:'✈️', bg:'linear-gradient(135deg,#bbdefb,#e3f2fd)', genre:'Skill', path:'papery-planes'},
+  {name:'Animal Crossing',thumb:'animal-crossing.svg', emoji:'🍃', bg:'linear-gradient(135deg,#80deea,#a5d6a7)', genre:'Simulation', src:'https://hub-pro.github.io/games/animalcrossingwildworld/'},
+  {name:'Papery Planes',thumb:'papery-planes.svg', emoji:'✈️', bg:'linear-gradient(135deg,#bbdefb,#e3f2fd)', genre:'Skill', src:'https://hub-pro.github.io/games/paperyplanes/'},
   {name:'Portal',thumb:'portal.svg', emoji:'🌀', bg:'#212121', genre:'Puzzle', path:'portal'},
   {name:'Super Mario 64',thumb:'super-mario-64.svg', emoji:'⭐', bg:'linear-gradient(135deg,#1976d2,#0d47a1)', genre:'Skill', path:'super-mario-64'},
   {name:'Super Smash Flash',thumb:'super-smash-flash.svg', emoji:'⚔️', bg:'linear-gradient(135deg,#ffeb3b,#f57c00)', genre:'Action', path:'super-smash-flash'},
   {name:'Friday Night Funkin',thumb:'friday-night-funkin.svg', emoji:'🎤', bg:'linear-gradient(135deg,#311b92,#7b1fa2)', genre:'Skill', path:'friday-night-funkin'},
   {name:'Trollface Quest',thumb:'trollface-quest.svg', emoji:'😈', bg:'#fff', genre:'Puzzle', path:'trollface-quest'},
   {name:'There Is No Game',thumb:'there-is-no-game.svg', emoji:'🚫', bg:'linear-gradient(135deg,#37474f,#212121)', genre:'Puzzle', path:'there-is-no-game'},
-  {name:'Super Scribblenauts',thumb:'super-scribblenauts.svg', emoji:'✏️', bg:'#fff8e1', genre:'Puzzle', path:'super-scribblenauts'},
-  {name:'Rocket League',thumb:'rocket-league.svg', emoji:'🚀', bg:'linear-gradient(135deg,#1565c0,#0d47a1)', genre:'Sports', path:'rocket-league'},
-  {name:'Ace Attorney',thumb:'ace-attorney.svg', emoji:'⚖️', bg:'linear-gradient(135deg,#0d47a1,#01579b)', genre:'Puzzle', path:'ace-attorney'},
+  {name:'Super Scribblenauts',thumb:'super-scribblenauts.svg', emoji:'✏️', bg:'#fff8e1', genre:'Puzzle', src:'https://hub-pro.github.io/games/superscribblenauts/'},
+  {name:'Rocket League',thumb:'rocket-league.svg', emoji:'🚀', bg:'linear-gradient(135deg,#1565c0,#0d47a1)', genre:'Sports', src:'https://hub-pro.github.io/games/rocketsoccer/'},
+  {name:'Ace Attorney',thumb:'ace-attorney.svg', emoji:'⚖️', bg:'linear-gradient(135deg,#0d47a1,#01579b)', genre:'Puzzle', src:'https://hub-pro.github.io/games/aceattorney/'},
   {name:'Draw the Hill',thumb:'draw-the-hill.svg', emoji:'✏️', bg:'linear-gradient(135deg,#fff59d,#fff)', genre:'Skill', path:'draw-the-hill'},
-  {name:'Dune',thumb:'dune.svg', emoji:'🏜️', bg:'linear-gradient(135deg,#ff6f00,#ffd54f)', genre:'Action', path:'dune'},
+  {name:'Dune',thumb:'dune.svg', emoji:'🏜️', bg:'linear-gradient(135deg,#ff6f00,#ffd54f)', genre:'Action', src:'https://hub-pro.github.io/games/dune/'},
   {name:'Storm The House 2',thumb:'storm-the-house.svg', emoji:'🏰', bg:'linear-gradient(135deg,#37474f,#78909c)', genre:'Action', path:'storm-the-house'},
-  {name:'Subway Surfers SF',thumb:'subway-surfers-sf.svg', emoji:'🚇', bg:'linear-gradient(135deg,#ff8a65,#ffab91)', genre:'Skill', path:'subway-surfers-sf'},
+  {name:'Subway Surfers SF',thumb:'subway-surfers-sf.svg', emoji:'🚇', bg:'linear-gradient(135deg,#ff8a65,#ffab91)', genre:'Skill', src:'https://hub-pro.github.io/games/subwaysurferssanfransisco/'},
   {name:'Super Mario 63',thumb:'super-mario-63.svg', emoji:'🍄', bg:'linear-gradient(135deg,#42a5f5,#1565c0)', genre:'Skill', path:'super-mario-63'},
-  {name:'Trans Cube',thumb:'trans-cube.svg', emoji:'🧊', bg:'linear-gradient(135deg,#5e35b1,#1a237e)', genre:'Puzzle', path:'trans-cube'},
-  {name:'Duck Life',thumb:'duck-life.svg', emoji:'🦆', bg:'linear-gradient(135deg,#81d4fa,#81c784)', genre:'Skill', path:'duck-life'},
+  {name:'Duck Life',thumb:'duck-life.svg', emoji:'🦆', bg:'linear-gradient(135deg,#81d4fa,#81c784)', genre:'Skill', src:'https://hub-pro.github.io/games/ducklife/ducklife4/'},
   {name:"Papa's Burgeria",thumb:'papas-burgeria.svg', emoji:'🍔', bg:'linear-gradient(135deg,#ffb74d,#ff8a65)', genre:'Simulation', path:'papas-burgeria'},
   {name:"Papa's Freezeria",thumb:'papas-freezeria.svg', emoji:'🍨', bg:'linear-gradient(135deg,#80deea,#4dd0e1)', genre:'Simulation', path:'papas-freezeria'},
   {name:"Papa's Pizzeria",thumb:'papas-pizzeria.svg', emoji:'🍕', bg:'linear-gradient(135deg,#bf360c,#d84315)', genre:'Simulation', path:'papas-pizzeria'},
