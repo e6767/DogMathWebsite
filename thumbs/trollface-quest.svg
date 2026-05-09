@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#fff"/>
+  <!-- Sketchy grid -->
+  <g stroke="#bdbdbd" stroke-width="0.5" opacity="0.5">
+    <line x1="0" y1="50" x2="200" y2="50"/>
+    <line x1="0" y1="100" x2="200" y2="100"/>
+    <line x1="0" y1="150" x2="200" y2="150"/>
+    <line x1="50" y1="0" x2="50" y2="200"/>
+    <line x1="100" y1="0" x2="100" y2="200"/>
+    <line x1="150" y1="0" x2="150" y2="200"/>
+  </g>
+  <!-- Trollface -->
+  <g transform="translate(100 90)">
+    <!-- Face circle -->
+    <circle r="50" fill="#fff" stroke="#212121" stroke-width="3"/>
+    <!-- Eyebrows -->
+    <path d="M -30 -20 Q -20 -28 -10 -22" stroke="#212121" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M 30 -20 Q 20 -28 10 -22" stroke="#212121" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- Eyes -->
+    <circle cx="-18" cy="-10" r="5" fill="#fff" stroke="#212121" stroke-width="2"/>
+    <circle cx="18" cy="-10" r="5" fill="#fff" stroke="#212121" stroke-width="2"/>
+    <circle cx="-17" cy="-9" r="2" fill="#212121"/>
+    <circle cx="19" cy="-9" r="2" fill="#212121"/>
+    <!-- Big grin -->
+    <path d="M -30 5 Q -25 25 0 28 Q 25 25 30 5 Q 20 18 0 18 Q -20 18 -30 5 Z" fill="#fff" stroke="#212121" stroke-width="2.5" stroke-linejoin="round"/>
+    <!-- Teeth line -->
+    <line x1="-22" y1="14" x2="22" y2="14" stroke="#212121" stroke-width="1"/>
+  </g>
+  <!-- Title -->
+  <text x="100" y="180" text-anchor="middle" fill="#212121" font-family="Arial Black" font-size="16" font-weight="900">TROLLFACE QUEST</text>
+</svg>

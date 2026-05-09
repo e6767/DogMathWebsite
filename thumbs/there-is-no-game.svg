@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="ting-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#37474f"/>
+      <stop offset="1" stop-color="#212121"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#ting-bg)"/>
+  <!-- Computer monitor frame -->
+  <rect x="20" y="30" width="160" height="110" rx="8" fill="#212121" stroke="#9e9e9e" stroke-width="3"/>
+  <!-- Screen -->
+  <rect x="28" y="38" width="144" height="94" fill="#1a237e"/>
+  <!-- Stand -->
+  <rect x="85" y="140" width="30" height="14" fill="#9e9e9e"/>
+  <rect x="65" y="154" width="70" height="6" rx="3" fill="#9e9e9e"/>
+  <!-- Big NO -->
+  <text x="100" y="100" text-anchor="middle" fill="#e53935" font-family="Arial Black" font-size="60" font-weight="900" stroke="#fff" stroke-width="2">NO</text>
+  <!-- "Don't click" finger pointer -->
+  <text x="60" y="118" text-anchor="middle" fill="#fdd835" font-family="Courier New" font-size="9" font-weight="bold">click?</text>
+  <!-- Title -->
+  <text x="100" y="180" text-anchor="middle" fill="#fff" font-family="Arial Black" font-size="14" font-weight="900">THERE IS NO</text>
+  <text x="100" y="195" text-anchor="middle" fill="#e53935" font-family="Arial Black" font-size="16" font-weight="900" stroke="#fff" stroke-width="0.4">GAME</text>
+</svg>

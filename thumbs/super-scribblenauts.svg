@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#fff8e1"/>
+  <!-- Notebook paper lines -->
+  <g stroke="#90caf9" stroke-width="1" opacity="0.6">
+    <line x1="0" y1="40" x2="200" y2="40"/>
+    <line x1="0" y1="60" x2="200" y2="60"/>
+    <line x1="0" y1="80" x2="200" y2="80"/>
+    <line x1="0" y1="100" x2="200" y2="100"/>
+    <line x1="0" y1="120" x2="200" y2="120"/>
+    <line x1="0" y1="140" x2="200" y2="140"/>
+  </g>
+  <!-- Red margin line -->
+  <line x1="25" y1="0" x2="25" y2="200" stroke="#ef5350" stroke-width="1.5"/>
+  <!-- Holes -->
+  <circle cx="14" cy="40" r="4" fill="#fff" stroke="#bdbdbd" stroke-width="1"/>
+  <circle cx="14" cy="100" r="4" fill="#fff" stroke="#bdbdbd" stroke-width="1"/>
+  <circle cx="14" cy="160" r="4" fill="#fff" stroke="#bdbdbd" stroke-width="1"/>
+  <!-- Drawn objects (cartoony) -->
+  <!-- Sun/star -->
+  <polygon points="60,55 64,65 75,65 66,72 70,82 60,76 50,82 54,72 45,65 56,65" fill="#fdd835" stroke="#f57f17" stroke-width="1.5"/>
+  <!-- Heart -->
+  <path d="M 130 60 C 120 50, 110 60, 130 78 C 150 60, 140 50, 130 60 Z" fill="#e53935" stroke="#b71c1c" stroke-width="1.5"/>
+  <!-- Tree -->
+  <rect x="56" y="120" width="6" height="14" fill="#5d4037"/>
+  <circle cx="59" cy="118" r="10" fill="#43a047" stroke="#1b5e20" stroke-width="1.5"/>
+  <!-- Pencil drawing -->
+  <g transform="translate(120 110) rotate(45)">
+    <rect width="40" height="6" fill="#fdd835" stroke="#212121" stroke-width="1"/>
+    <polygon points="40,0 50,3 40,6" fill="#ffccbc" stroke="#212121" stroke-width="1"/>
+    <polygon points="50,3 47,1.5 47,4.5" fill="#212121"/>
+    <rect x="0" y="0" width="6" height="6" fill="#ec407a" stroke="#212121" stroke-width="1"/>
+  </g>
+  <!-- Title -->
+  <text x="105" y="175" text-anchor="middle" fill="#1565c0" font-family="Comic Sans MS" font-size="16" font-weight="bold">SCRIBBLENAUTS</text>
+  <text x="105" y="192" text-anchor="middle" fill="#37474f" font-family="Comic Sans MS" font-size="10" font-style="italic">word puzzles</text>
+</svg>

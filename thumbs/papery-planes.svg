@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="pp-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#bbdefb"/>
+      <stop offset="1" stop-color="#e3f2fd"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#pp-sky)"/>
+  <!-- Cloud -->
+  <ellipse cx="40" cy="60" rx="22" ry="10" fill="#fff" opacity="0.9"/>
+  <ellipse cx="55" cy="55" rx="14" ry="9" fill="#fff" opacity="0.9"/>
+  <ellipse cx="160" cy="40" rx="20" ry="9" fill="#fff" opacity="0.8"/>
+  <ellipse cx="170" cy="155" rx="20" ry="8" fill="#fff" opacity="0.7"/>
+  <!-- Trail -->
+  <path d="M 30 150 Q 80 130 110 100" stroke="#fff" stroke-width="3" fill="none" stroke-dasharray="4 4" opacity="0.7"/>
+  <!-- Paper plane (large, center) -->
+  <g transform="translate(110 90) rotate(-15)">
+    <!-- Right wing -->
+    <polygon points="0,0 60,15 30,15 50,40" fill="#f5f5f5" stroke="#37474f" stroke-width="1.5"/>
+    <!-- Left wing (lower) -->
+    <polygon points="0,0 60,15 30,30 0,20" fill="#e0e0e0" stroke="#37474f" stroke-width="1.5"/>
+    <!-- Body fold -->
+    <line x1="0" y1="0" x2="60" y2="15" stroke="#37474f" stroke-width="1.5"/>
+    <line x1="0" y1="0" x2="30" y2="20" stroke="#90a4ae" stroke-width="1"/>
+  </g>
+  <!-- Title -->
+  <text x="100" y="185" text-anchor="middle" fill="#1565c0" font-family="Arial Black" font-size="16" font-weight="900" stroke="#fff" stroke-width="0.6">PAPERY PLANES</text>
+</svg>

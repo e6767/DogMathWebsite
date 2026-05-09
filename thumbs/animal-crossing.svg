@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="ac-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#80deea"/>
+      <stop offset="1" stop-color="#a5d6a7"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#ac-sky)"/>
+  <!-- Grass ground -->
+  <ellipse cx="100" cy="200" rx="160" ry="60" fill="#66bb6a"/>
+  <ellipse cx="100" cy="210" rx="180" ry="55" fill="#43a047"/>
+  <!-- Sun -->
+  <circle cx="170" cy="35" r="14" fill="#fff59d"/>
+  <!-- Tree -->
+  <rect x="30" y="100" width="10" height="35" fill="#5d4037"/>
+  <circle cx="35" cy="92" r="22" fill="#388e3c"/>
+  <circle cx="48" cy="86" r="14" fill="#43a047"/>
+  <circle cx="22" cy="86" r="14" fill="#43a047"/>
+  <!-- House -->
+  <polygon points="150,140 175,115 200,140 200,170 150,170" fill="#ef5350"/>
+  <rect x="160" y="140" width="30" height="30" fill="#fff8e1"/>
+  <rect x="170" y="150" width="10" height="20" fill="#5d4037"/>
+  <!-- Character (Tom Nook style raccoon) -->
+  <ellipse cx="95" cy="165" rx="18" ry="20" fill="#a1887f"/>
+  <circle cx="95" cy="140" r="16" fill="#a1887f"/>
+  <!-- Mask -->
+  <ellipse cx="95" cy="142" rx="11" ry="6" fill="#3e2723"/>
+  <!-- Eyes -->
+  <circle cx="91" cy="141" r="2" fill="#fff"/>
+  <circle cx="99" cy="141" r="2" fill="#fff"/>
+  <!-- Ears -->
+  <circle cx="83" cy="129" r="5" fill="#a1887f"/>
+  <circle cx="107" cy="129" r="5" fill="#a1887f"/>
+  <!-- Snout -->
+  <ellipse cx="95" cy="148" rx="3" ry="2" fill="#3e2723"/>
+  <!-- Title -->
+  <text x="100" y="185" text-anchor="middle" fill="#fff" font-family="Arial Black" font-size="13" font-weight="900" stroke="#1b5e20" stroke-width="0.6">ANIMAL CROSSING</text>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="fnf-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#311b92"/>
+      <stop offset="1" stop-color="#7b1fa2"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#fnf-bg)"/>
+  <!-- Stage lights -->
+  <polygon points="40,0 60,80 20,80" fill="#fff" opacity="0.15"/>
+  <polygon points="160,0 180,80 140,80" fill="#fff" opacity="0.15"/>
+  <!-- Arrow keys (rhythm) -->
+  <g transform="translate(20 95)">
+    <rect width="34" height="34" rx="6" fill="#e91e63" stroke="#fff" stroke-width="2"/>
+    <polygon points="17,8 8,20 13,20 13,28 21,28 21,20 26,20" fill="#fff" transform="rotate(-90 17 18)"/>
+  </g>
+  <g transform="translate(58 95)">
+    <rect width="34" height="34" rx="6" fill="#43a047" stroke="#fff" stroke-width="2"/>
+    <polygon points="17,8 8,20 13,20 13,28 21,28 21,20 26,20" fill="#fff" transform="rotate(180 17 18)"/>
+  </g>
+  <g transform="translate(96 95)">
+    <rect width="34" height="34" rx="6" fill="#1e88e5" stroke="#fff" stroke-width="2"/>
+    <polygon points="17,8 8,20 13,20 13,28 21,28 21,20 26,20" fill="#fff"/>
+  </g>
+  <g transform="translate(134 95)">
+    <rect width="34" height="34" rx="6" fill="#f9a825" stroke="#fff" stroke-width="2"/>
+    <polygon points="17,8 8,20 13,20 13,28 21,28 21,20 26,20" fill="#fff" transform="rotate(90 17 18)"/>
+  </g>
+  <!-- Microphone (top) -->
+  <g transform="translate(100 50)">
+    <circle r="14" fill="#bdbdbd" stroke="#212121" stroke-width="2"/>
+    <circle r="11" fill="#424242"/>
+    <line y1="14" y2="35" stroke="#212121" stroke-width="3"/>
+    <!-- Grille dots -->
+    <circle cx="-5" cy="-5" r="1" fill="#fff"/>
+    <circle cx="0" cy="-5" r="1" fill="#fff"/>
+    <circle cx="5" cy="-5" r="1" fill="#fff"/>
+    <circle cx="-5" cy="0" r="1" fill="#fff"/>
+    <circle cx="5" cy="0" r="1" fill="#fff"/>
+    <circle cx="0" cy="5" r="1" fill="#fff"/>
+  </g>
+  <!-- Music notes -->
+  <text x="30" y="55" fill="#fff" font-family="Arial" font-size="18" opacity="0.7">♪</text>
+  <text x="170" y="60" fill="#fff" font-family="Arial" font-size="22" opacity="0.7">♫</text>
+  <text x="160" y="170" fill="#fff" font-family="Arial" font-size="18" opacity="0.7">♪</text>
+  <!-- Title -->
+  <text x="100" y="160" text-anchor="middle" fill="#ec407a" font-family="Arial Black" font-size="14" font-weight="900" stroke="#fff" stroke-width="0.5">FRIDAY NIGHT</text>
+  <text x="100" y="185" text-anchor="middle" fill="#fff" font-family="Arial Black" font-size="20" font-weight="900" stroke="#ec407a" stroke-width="1">FUNKIN</text>
+</svg>
