@@ -5,4 +5,4 @@ Allow: /
 User-agent: Mediapartners-Google
 Allow: /
 
-Sitemap: https://dogmath.net/sitemap.xml
+Sitemap: https://www.dogmath.net/sitemap.xml

@@ -70,7 +70,7 @@ WEBSITE_JSONLD_RE = re.compile(r'<script\s+type=["\']application/ld\+json["\']\s
 def render_for_game(homepage_html, game):
     name = game["name"]
     slug = game["slug"]
-    canonical_url = f"https://dogmath.net/play/{slug}/"
+    canonical_url = f"https://www.dogmath.net/play/{slug}/"
     page_title = f"{name} - Play Free at Dogmath"
     page_desc = (
         f"Play {name} free online at Dogmath. {game['genre']} browser game — "
@@ -105,12 +105,12 @@ def render_for_game(homepage_html, game):
         "name": name,
         "description": page_desc,
         "url": canonical_url,
-        "image": f"https://dogmath.net/thumbs/{slug}.svg",
+        "image": f"https://www.dogmath.net/thumbs/{slug}.svg",
         "genre": game["genre"],
         "applicationCategory": "Game",
         "operatingSystem": "Any (Browser)",
         "isAccessibleForFree": True,
-        "publisher": {"@type": "Organization", "name": "Dogmath", "url": "https://dogmath.net/"},
+        "publisher": {"@type": "Organization", "name": "Dogmath", "url": "https://www.dogmath.net/"},
     }, indent=2)
     replacement = f'<script type="application/ld+json">\n{videogame_ld}\n</script>'
     h = WEBSITE_JSONLD_RE.sub(lambda m: replacement, h, count=1)
