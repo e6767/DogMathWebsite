@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="rs-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#15803d"/>
+      <stop offset="1" stop-color="#166534"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#rs-bg)"/>
+  <!-- field lines -->
+  <circle cx="100" cy="200" r="70" fill="none" stroke="#fff" stroke-width="1.5" opacity=".3"/>
+  <line x1="100" y1="80" x2="100" y2="200" stroke="#fff" stroke-width="1.5" opacity=".3"/>
+  <!-- goal net hints -->
+  <rect x="70" y="76" width="60" height="18" rx="2" fill="none" stroke="#fff" stroke-width="1.5" opacity=".5"/>
+  <!-- rocket car (side view, pointing right) -->
+  <g transform="translate(30 118)">
+    <path d="M10 20 L12 8 L60 4 L78 8 L82 16 L82 26 L10 26 Z" fill="#3b82f6"/>
+    <path d="M12 8 L58 5 L72 8 L72 18 L12 18 Z" fill="#60a5fa"/>
+    <circle cx="22" cy="28" r="9" fill="#1e293b"/>
+    <circle cx="22" cy="28" r="5" fill="#94a3b8"/>
+    <circle cx="66" cy="28" r="9" fill="#1e293b"/>
+    <circle cx="66" cy="28" r="5" fill="#94a3b8"/>
+    <!-- flame/boost -->
+    <ellipse cx="0" cy="20" rx="12" ry="5" fill="#f97316" opacity=".9"/>
+    <ellipse cx="-6" cy="20" rx="8" ry="3.5" fill="#fbbf24"/>
+  </g>
+  <!-- soccer ball -->
+  <circle cx="148" cy="128" r="22" fill="#fff" stroke="#111" stroke-width="1"/>
+  <path d="M148 106 L155 118 L141 118 Z" fill="#111"/>
+  <path d="M170 122 L158 130 L162 117 Z" fill="#111"/>
+  <path d="M163 146 L148 140 L155 128 Z" fill="#111"/>
+  <path d="M133 146 L138 128 L148 140 Z" fill="#111"/>
+  <path d="M126 122 L138 117 L134 130 Z" fill="#111"/>
+  <!-- labels -->
+  <text x="100" y="172" text-anchor="middle" fill="#fbbf24" font-family="Arial Black" font-size="19" font-weight="900">ROCKET</text>
+  <text x="100" y="192" text-anchor="middle" fill="#fff" font-family="Arial Black" font-size="16" font-weight="900">SOCCER</text>
+</svg>

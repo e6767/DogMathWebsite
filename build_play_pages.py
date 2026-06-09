@@ -11,7 +11,7 @@ The body is identical to the homepage; the JS routing in index.html will
 auto-open the game on load when window.location.pathname matches /play/<slug>/.
 """
 
-import re, json, html, shutil
+import re, json, html, shutil, sys, datetime
 from pathlib import Path
 
 ROOT = Path(__file__).parent
@@ -50,6 +50,7 @@ def parse_games(index_html):
             "src": fields.get("src"),
             "path": path,
             "slug": slug,
+            "thumb": fields.get("thumb") or f"{slug}.svg",
         })
     return games
 
@@ -61,7 +62,9 @@ CANON_RE = re.compile(r'<link\s+rel=["\']canonical["\']\s+href=["\'][^"\']*["\']
 OG_TITLE_RE = re.compile(r'<meta\s+property=["\']og:title["\']\s+content=["\'][^"\']*["\']\s*/?>', re.IGNORECASE)
 OG_DESC_RE = re.compile(r'<meta\s+property=["\']og:description["\']\s+content=["\'][^"\']*["\']\s*/?>', re.IGNORECASE)
 OG_URL_RE = re.compile(r'<meta\s+property=["\']og:url["\']\s+content=["\'][^"\']*["\']\s*/?>', re.IGNORECASE)
+OG_IMAGE_RE = re.compile(r'<meta\s+property=["\']og:image["\']\s+content=["\'][^"\']*["\']\s*/?>', re.IGNORECASE)
 TW_TITLE_RE = re.compile(r'<meta\s+name=["\']twitter:title["\']\s+content=["\'][^"\']*["\']\s*/?>', re.IGNORECASE)
+TW_IMAGE_RE = re.compile(r'<meta\s+name=["\']twitter:image["\']\s+content=["\'][^"\']*["\']\s*/?>', re.IGNORECASE)
 TW_DESC_RE = re.compile(r'<meta\s+name=["\']twitter:description["\']\s+content=["\'][^"\']*["\']\s*/?>', re.IGNORECASE)
 TW_URL_RE = re.compile(r'<meta\s+name=["\']twitter:url["\']\s+content=["\'][^"\']*["\']\s*/?>', re.IGNORECASE)
 WEBSITE_JSONLD_RE = re.compile(r'<script\s+type=["\']application/ld\+json["\']\s*>\s*\{[^<]*?"@type":\s*"WebSite".*?</script>', re.DOTALL | re.IGNORECASE)
@@ -71,16 +74,18 @@ def render_for_game(homepage_html, game):
     name = game["name"]
     slug = game["slug"]
     canonical_url = f"https://www.dogmath.net/play/{slug}/"
-    page_title = f"{name} - Play Free at Dogmath"
+    image_url = f"https://www.dogmath.net/thumbs/{game['thumb']}"
+    page_title = f"{name} Unblocked - Play {name} Free Online | Dogmath"
     page_desc = (
-        f"Play {name} free online at Dogmath. {game['genre']} browser game — "
-        f"no download, no signup, just instant play in any browser."
+        f"Play {name} unblocked for free at Dogmath. {game['genre']} browser game with "
+        f"no downloads and no sign-up — instant play on any school or work browser."
     )
 
     # Escape attribute values
     et = html.escape(page_title, quote=True)
     ed = html.escape(page_desc, quote=True)
     eu = html.escape(canonical_url, quote=True)
+    ei = html.escape(image_url, quote=True)
     en = html.escape(name, quote=True)
 
     h = homepage_html
@@ -94,9 +99,11 @@ def render_for_game(homepage_html, game):
     h = OG_TITLE_RE.sub(f'<meta property="og:title" content="{et}"/>', h, count=1)
     h = OG_DESC_RE.sub(f'<meta property="og:description" content="{ed}"/>', h, count=1)
     h = OG_URL_RE.sub(f'<meta property="og:url" content="{eu}"/>', h, count=1)
+    h = OG_IMAGE_RE.sub(f'<meta property="og:image" content="{ei}"/>', h, count=1)
     h = TW_TITLE_RE.sub(f'<meta name="twitter:title" content="{et}"/>', h, count=1)
     h = TW_DESC_RE.sub(f'<meta name="twitter:description" content="{ed}"/>', h, count=1)
     h = TW_URL_RE.sub(f'<meta name="twitter:url" content="{eu}"/>', h, count=1)
+    h = TW_IMAGE_RE.sub(f'<meta name="twitter:image" content="{ei}"/>', h, count=1)
 
     # Replace the WebSite JSON-LD with a VideoGame one
     videogame_ld = json.dumps({
@@ -105,7 +112,7 @@ def render_for_game(homepage_html, game):
         "name": name,
         "description": page_desc,
         "url": canonical_url,
-        "image": f"https://www.dogmath.net/thumbs/{slug}.svg",
+        "image": image_url,
         "genre": game["genre"],
         "applicationCategory": "Game",
         "operatingSystem": "Any (Browser)",
@@ -118,7 +125,25 @@ def render_for_game(homepage_html, game):
     return h
 
 
+def write_sitemap(games, lastmod):
+    lines = ['<?xml version="1.0" encoding="UTF-8"?>',
+             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    lines.append(
+        f'  <url><loc>https://www.dogmath.net/</loc><lastmod>{lastmod}</lastmod>'
+        f'<changefreq>daily</changefreq><priority>1.0</priority></url>'
+    )
+    for g in games:
+        lines.append(
+            f'  <url><loc>https://www.dogmath.net/play/{g["slug"]}/</loc>'
+            f'<lastmod>{lastmod}</lastmod><changefreq>weekly</changefreq>'
+            f'<priority>0.8</priority></url>'
+        )
+    lines.append('</urlset>')
+    (ROOT / "sitemap.xml").write_text("\n".join(lines) + "\n")
+
+
 def main():
+    lastmod = sys.argv[1] if len(sys.argv) > 1 else datetime.date.today().isoformat()
     homepage = INDEX.read_text()
     games = parse_games(homepage)
     print(f"parsed {len(games)} games from index.html")
@@ -140,6 +165,10 @@ def main():
     slugs_file = ROOT / ".play-slugs.txt"
     slugs_file.write_text("\n".join(g["slug"] for g in games) + "\n")
     print(f"slug list -> {slugs_file}")
+
+    # Regenerate sitemap.xml (homepage + one entry per game)
+    write_sitemap(games, lastmod)
+    print(f"sitemap.xml regenerated with {len(games) + 1} urls (lastmod {lastmod})")
 
 
 if __name__ == "__main__":

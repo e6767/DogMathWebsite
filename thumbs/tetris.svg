@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="tt-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#tt-bg)"/>
+
+  <!-- T piece (purple) -->
+  <g fill="#a855f7">
+    <rect x="36" y="40" width="22" height="22" rx="3"/>
+    <rect x="58" y="40" width="22" height="22" rx="3"/>
+    <rect x="80" y="40" width="22" height="22" rx="3"/>
+    <rect x="58" y="62" width="22" height="22" rx="3"/>
+  </g>
+
+  <!-- O piece (yellow) -->
+  <g fill="#facc15">
+    <rect x="120" y="40" width="22" height="22" rx="3"/>
+    <rect x="142" y="40" width="22" height="22" rx="3"/>
+    <rect x="120" y="62" width="22" height="22" rx="3"/>
+    <rect x="142" y="62" width="22" height="22" rx="3"/>
+  </g>
+
+  <!-- S piece (green) -->
+  <g fill="#4ade80">
+    <rect x="58" y="98" width="22" height="22" rx="3"/>
+    <rect x="80" y="98" width="22" height="22" rx="3"/>
+    <rect x="36" y="120" width="22" height="22" rx="3"/>
+    <rect x="58" y="120" width="22" height="22" rx="3"/>
+  </g>
+
+  <!-- L piece (orange) -->
+  <g fill="#fb923c">
+    <rect x="120" y="98" width="22" height="22" rx="3"/>
+    <rect x="120" y="120" width="22" height="22" rx="3"/>
+    <rect x="142" y="120" width="22" height="22" rx="3"/>
+    <rect x="164" y="120" width="22" height="22" rx="3" opacity="0.55"/>
+  </g>
+
+  <text x="100" y="180" text-anchor="middle" fill="#38bdf8" font-family="Arial Black, sans-serif" font-size="22" font-weight="900" letter-spacing="3">TETRIS</text>
+</svg>
